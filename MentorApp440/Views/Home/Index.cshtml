@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Log in to continue</h1>
+@* TODO: maybe make form a model if that makes sense to do *@
+<form asp-controller="Home" asp-action="LogIn">
+    <input name="username" id="usernameField" type="text" placeholder="username" required/>
+    <button type="submit">Log In</button>
+</form>
