@@ -28,7 +28,12 @@ public class HomeController : Controller
     {
         // TODO: add username to session variables
         if (!string.IsNullOrWhiteSpace(username))
-            HttpContext.Session.SetString(SessionVariables.SessionKeyUsername, username);
+        {
+            HttpContext.Session.Set(SessionVariables.SessionKeyUsername, username);
+            HttpContext.Session.Set(SessionVariables.SessionKeySessionId, Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
+
+            ViewData["Username"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUsername);
+        }
         
         if (username.Equals("admin")) // if username in admin return admin view
             return View("Admin");
