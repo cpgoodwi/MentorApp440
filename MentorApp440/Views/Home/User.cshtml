@@ -1,11 +1,12 @@
 ﻿@{
-    if (ViewData["UserId"].Equals(ViewData["ViewUser"]))
+    if (!(ViewData["UserId"] as string).Equals(ViewData["ViewUser"] as string))
         ViewData["Title"] = $"{ViewData["ViewUser"]} - Profile";
     else
         ViewData["Title"] = "Dashboard";
     
     var user = new User(ViewData["ViewUser"] as string);
 }
+
 @*TODO: display user dashboard page*@
 
 @if (ViewData["UserId"].Equals(ViewData["ViewUser"]))
@@ -39,9 +40,16 @@ else
     <textarea placeholder="create a new goal"></textarea>
 }
 
-<ul>
+<ul id="goalListId">
     @foreach (var goal in user.ListGoals())
     {
         <li>@goal</li>
+    }
+</ul>
+
+<ul id="taskListId">
+    @foreach (var task in user.ListTasks())
+    {
+        <li>@task</li>
     }
 </ul>
