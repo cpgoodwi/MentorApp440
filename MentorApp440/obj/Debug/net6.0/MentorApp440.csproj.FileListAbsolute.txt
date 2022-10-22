@@ -50,3 +50,4 @@ C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\De
 C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.pdb
 C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.genruntimeconfig.cache
 C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\ref\MentorApp440.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Home\User.cshtml.rz.scp.css

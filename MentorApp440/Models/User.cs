@@ -4,11 +4,12 @@ public class User
 {
     public string UserId { get; }
     public string Name { get; set; }
-    public string Image { get; set; }
+    public string Image { get; set; } // string for image url to display their image
     public string Desc { get; set; }
     private User Mentor { get; set; }
     private UserType Type { get; set; }
     private List<Goal> Goals { get; set; }
+    private List<Task> Tasks { get; set; }
 
     private enum UserType
     {
@@ -26,6 +27,18 @@ public class User
         {
             Completed = completed;
             GoalStr = goalStr;
+        }
+    }
+
+    private class Task
+    {
+        public bool Completed { get; set; }
+        public string TaskStr { get; set; }
+        
+        public Task(bool completed, string taskStr)
+        {
+            Completed = completed;
+            TaskStr = taskStr;
         }
     }
     
@@ -55,6 +68,14 @@ public class User
             new Goal(true, "this shouldn't be here"),
             new Goal(false, "this is goal number 4")
         };
+        
+        Tasks = new List<Task>
+        {
+            new Task(false, "This is the first task"),
+            new Task(false, "This is the second task"),
+            new Task(true, "This is the third task"),
+            new Task(false, "This is the fourth task")
+        };
     }
 
     public bool IsNew()
@@ -75,6 +96,19 @@ public class User
         }
 
         return goalList;
+    }
+    
+    public List<string> ListTasks()
+    {
+        List<string> taskList = new List<string>();
+        
+        foreach (var task in Tasks)
+        {
+            if (!task.Completed)
+                taskList.Add(task.TaskStr);
+        }
+
+        return taskList;
     }
 
     public string GetMentorId()
