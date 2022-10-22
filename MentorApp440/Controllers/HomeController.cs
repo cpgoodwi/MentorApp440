@@ -57,6 +57,19 @@ public class HomeController : Controller
             return View("User");
     }
 
+    /* ToDashboard()
+     * should only be available if user is logged in
+     * returns a view of user's own dashboard as if they logged in again
+     */
+    [Route("Home/Dashboard")]
+    public IActionResult ToDashboard()
+    {
+        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+        ViewData["ViewUser"] = ViewData["UserId"];
+
+        return View("User");
+    }
+
     /* SelectUser(username)
      * takes username as parameter
      * returns a view of a user's profile
