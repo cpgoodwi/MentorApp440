@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MentorApp440.Models;
 using MentorApp440.Session;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace MentorApp440.Controllers;
 
@@ -19,28 +20,56 @@ public class HomeController : Controller
         return View();
     }
 
+    /* LogOut()
+     * should only be accessible if the user is logged in
+     * returns to log in page and clears session data
+     */
+    [Route("Index")]
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.Set(SessionVariables.SessionKeyUserId, "");
+        HttpContext.Session.Set(SessionVariables.SessionKeySessionId, "");
+
+        return View("Index");
+    }
+
     /* LogIn(username)
      * takes username as only log in parameter, because that's not the focus of our project
      * returns views based on their user type (references database)
      */
+    [Route("Home/Dashboard")]
     [HttpPost]
     public IActionResult LogIn(string username)
     {
         // TODO: add username to session variables
         if (!string.IsNullOrWhiteSpace(username))
         {
-            HttpContext.Session.Set(SessionVariables.SessionKeyUsername, username);
+            HttpContext.Session.Set(SessionVariables.SessionKeyUserId, username);
             HttpContext.Session.Set(SessionVariables.SessionKeySessionId, Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
 
-            ViewData["Username"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUsername);
+            ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+            ViewData["ViewUser"] = ViewData["UserId"];
         }
         
         if (username.Equals("admin")) // if username in admin return admin view
             return View("Admin");
         else // if username in employee return standard user view
-            return View("Dashboard");
+            return View("User");
     }
 
+    /* SelectUser(username)
+     * takes username as parameter
+     * returns a view of a user's profile
+     */
+    [Route("User")]
+    [HttpGet]
+    public IActionResult SelectUser(string username)
+    {
+        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+        ViewData["ViewUser"] = username;
+        return View("User");
+    }
+    
     public IActionResult Privacy()
     {
         return View();

@@ -1,0 +1,47 @@
+﻿@{
+    if (ViewData["UserId"].Equals(ViewData["ViewUser"]))
+        ViewData["Title"] = $"{ViewData["ViewUser"]} - Profile";
+    else
+        ViewData["Title"] = "Dashboard";
+    
+    var user = new User(ViewData["ViewUser"] as string);
+}
+@*TODO: display user dashboard page*@
+
+@if (ViewData["UserId"].Equals(ViewData["ViewUser"]))
+{
+    <a asp-controller="Home" asp-action="LogOut">Log Out</a>
+}
+else
+{
+    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@ViewData["UserId"]">Your Profile</a>
+}
+
+<h1>@user.Name</h1>
+<p>@user.Desc</p>
+
+@if (user.IsNew())
+{
+    <p>This user is new.</p>
+}
+else
+{
+    <p>This user is peer.</p>
+}
+
+@if (user.HasMentor())
+{
+    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@user.GetMentorId()">@user.GetMentorName()</a>
+}
+
+@if (user.UserId.Equals(ViewData["UserId"] as string))
+{
+    <textarea placeholder="create a new goal"></textarea>
+}
+
+<ul>
+    @foreach (var goal in user.ListGoals())
+    {
+        <li>@goal</li>
+    }
+</ul>
