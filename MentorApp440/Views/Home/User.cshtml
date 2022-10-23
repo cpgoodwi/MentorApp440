@@ -1,4 +1,14 @@
-﻿@{
+﻿@*
+    ViewData:
+    - Title is just the title of the page
+    - UserId is the username or Id of the user
+    - ViewUser is used to select which profile is being viewed
+    
+    // TODO: if page is accessed by link, prompt them to log in
+*@
+
+@{
+    // If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
     if (!(ViewData["UserId"] as string).Equals(ViewData["ViewUser"] as string))
         ViewData["Title"] = $"{ViewData["ViewUser"]} - Profile";
     else
@@ -9,19 +19,21 @@
 
 @*TODO: display user dashboard page*@
 
-@if (ViewData["UserId"].Equals(ViewData["ViewUser"]))
+@if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is viewing themselves
 {
+    // allow them to logout
     <a asp-controller="Home" asp-action="LogOut">Log Out</a>
 }
 else
 {
+    // allow them to return to their dashboard
     <a asp-controller="Home" asp-action="ToDashboard">Return to Dashboard</a>
 }
 
 <h1>@user.Name</h1>
 <p>@user.Desc</p>
 
-@if (user.IsNew())
+@if (user.IsNew()) // This is just a test to load different parts based on if the user is new or not
 {
     <p>This user is new.</p>
 }
@@ -30,26 +42,28 @@ else
     <p>This user is peer.</p>
 }
 
-@if (user.HasMentor())
+@if (user.HasMentor()) // if mentor property of user is not null
 {
+    // display a link to the mentor's profile
     <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@user.GetMentorId()">@user.GetMentorName()</a>
 }
 
-@if (user.UserId.Equals(ViewData["UserId"] as string))
+@if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is on own profile
 {
+    // allow them to post a goal
     <textarea placeholder="create a new goal"></textarea>
 }
 
 <ul id="goalListId">
-    @foreach (var goal in user.ListGoals())
+    @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
     {
-        <li>@goal</li>
+        <li>@goal</li> // load each incomplete one as a list item
     }
 </ul>
 
 <ul id="taskListId">
-    @foreach (var task in user.ListTasks())
+    @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
     {
-        <li>@task</li>
+        <li>@task</li> // load each incomplete one as a list item
     }
 </ul>
