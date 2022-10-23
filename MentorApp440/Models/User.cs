@@ -13,9 +13,9 @@ public class User
 
     private enum UserType
     {
-        Admin,
-        Newbie,
-        Peer
+        Admin, // 0
+        Newbie, // 1
+        Peer // 2
     }
 
     private class Goal
