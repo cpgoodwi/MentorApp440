@@ -1,0 +1,24 @@
+body {
+    background-color: whitesmoke;
+}
+
+#welcome {
+    color: #011B34;
+}
+
+#welcome{
+    text-align: center;
+}
+
+#logInButton {
+    background-color: #fcf8e3;
+    color: #5A99D5;
+    border: 0;
+}
+#loginForm{
+    background-color: #5A99D5;
+}
+
+.vertical-center{
+    background-color: whitesmoke;
+}
