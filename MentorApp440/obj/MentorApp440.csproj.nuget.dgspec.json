@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj": {}
+    "/Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/MentorApp440.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj": {
+    "/Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/MentorApp440.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj",
+        "projectUniqueName": "/Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/MentorApp440.csproj",
         "projectName": "MentorApp440",
-        "projectPath": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj",
-        "packagesPath": "C:\\Users\\CharleyIsCool\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\obj\\",
+        "projectPath": "/Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/MentorApp440.csproj",
+        "packagesPath": "/Users/mikaelstorm50/.nuget/packages/",
+        "outputPath": "/Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CharleyIsCool\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mikaelstorm50/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
