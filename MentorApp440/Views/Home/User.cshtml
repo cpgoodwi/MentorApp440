@@ -57,7 +57,10 @@ else
 <ul id="goalListId">
     @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
     {
-        <li>@goal</li> // load each incomplete one as a list item
+        <li>
+            <p>@goal</p>
+            <button type="button">Done!</button>
+        </li> // load each incomplete one as a list item
     }
 </ul>
 
