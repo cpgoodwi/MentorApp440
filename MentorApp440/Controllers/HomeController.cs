@@ -49,6 +49,8 @@ public class HomeController : Controller
 
             ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
             ViewData["ViewUser"] = ViewData["UserId"];
+
+            // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
         }
         
         if (username.Equals("admin")) // if username in admin return admin view

@@ -15,7 +15,8 @@ public class User
     {
         Admin, // 0
         Newbie, // 1
-        Peer // 2
+        Peer, // 2
+        // Mentor // 3
     }
 
     private class Goal
