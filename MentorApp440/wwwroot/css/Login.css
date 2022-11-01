@@ -1,6 +1,12 @@
+*{
+    /*font-family: 'Roboto', serif;*/
+}
+body {
+    background-color: whitesmoke;
+}
+
 #welcome {
-    color: white;
-    font-size: xxx-large;
+    color: whitesmoke;
 }
 
 #welcome{

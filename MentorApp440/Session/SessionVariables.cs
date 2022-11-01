@@ -9,4 +9,5 @@ public class SessionVariables
 
     public const string _Viewing = "_Viewing";
     public const string _CurrUser = "_CurrUser";
+    public const string _OrgId = "_OrgId";
 }
