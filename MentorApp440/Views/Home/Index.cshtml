@@ -1,24 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="container py-5 h-100" id="loginForm" style="border-radius: 1rem; margin-top: 5%">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div>
-            <h1 id="welcome">Welcome To Flomento!</h1>
-            @* TODO: maybe make form a model if that makes sense to do *@
-        </div>
-        <div>
-            <form asp-controller="Home" asp-action="LogIn">
-                <div class="input-group w-50 mx-auto">
-                    @* <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> *@
-                    <input name="username" id="usernameField" type="text" class="form-control" placeholder="username" style="border-radius: 0.5rem;" required>
-                </div>
-                <div class="row pt-3">
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-primary" id="logInButton" type="submit">Log In</button>
+<div class="jumbotron vertical-center">
+    <div class="container py-5 h-100" id="loginForm" style="border-radius: 1rem;">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div>
+                <h1 id="welcome">Welcome To Flomento!</h1>
+                @* TODO: maybe make form a model if that makes sense to do *@
+            </div>
+            <div>
+                <form asp-controller="Home" asp-action="LogIn">
+                    <div class="input-group w-50 mx-auto">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="username" id="usernameField" type="text" class="form-control" placeholder="username" required>
                     </div>
-                </div>
-            </form>
+                    <div class="row pt-3">
+                        <div class="d-grid gap-2 col-3 mx-auto">
+                            <button class="btn btn-primary" id="logInButton" type="submit">Log In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>    
+</div>  
