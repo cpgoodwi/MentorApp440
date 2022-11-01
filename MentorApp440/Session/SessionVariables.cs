@@ -8,4 +8,5 @@ public class SessionVariables
     public const string SessionKeySessionId = "SessionKeySessionId"; // this variable is unused but might be important?
 
     public const string _Viewing = "_Viewing";
+    public const string _OrgId = "_OrgId";
 }
