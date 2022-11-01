@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G2hbabeNAFKw9SWzO1GbjSp6lnhC6IUU9ceiidRVwl4=",
+  "Hash": "LfZdJUf4ZP6gxkHLUI58NXfLl4LTDDOxeVMpVLw9VYI=",
   "Source": "MentorApp440",
   "BasePath": "_content/MentorApp440",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/css/User.css",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "css/User.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/User.css"
     },
     {
       "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/favicon.ico",
@@ -882,6 +899,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/bootstrap/LICENSE"
+    },
+    {
+      "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/lib/Images/Flomento.png",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "lib/Images/Flomento.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/Images/Flomento.png"
     },
     {
       "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
