@@ -109,19 +109,11 @@
             <ul id="goalListId">
                 @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
                 {
-                   <li>
-                    <p>@goal
-                                    <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-                                        <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                            <div class="form-check">
-                                                <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                                                   aria-label="..." checked />
-                                                   </div>
-                                                   </ul>
-
-                                                   </p> 
+                    // TODO: fix id and names for items so they can be functional, also add them to task list
+                    <li>
+                        <input type="checkbox" id="goalcheck"/>
+                        <label for="goalcheck">@goal</label>
                     </li>
-                   
                 }
             </ul>
         </div>
