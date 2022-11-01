@@ -60,16 +60,72 @@
             <button type="button" class="btn" id="editButton">Edit Profile</button>
         </div>
     </div>
+    
+
     <div class="row py-3">
         <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
-            <h2>Goals</h2>
+
+            <p class="h1 text-center text-primary">
+                <i class="fas fa-check-square me-1"></i>
+                <u>Goals</u>
+            </p>
+            <div class="pb-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                                   placeholder="Add new...">
+                            <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
+                                <i class="fas fa-calendar-alt fa-lg me-3"></i>
+                            </a>
+                            <div>
+                                <button type="button" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                <p class="small mb-0 me-2 text-muted">Filter</p>
+                <select class="select">
+                    <option value="1">All</option>
+                    <option value="2">Completed</option>
+                    <option value="3">Active</option>
+                    <option value="4">Has due date</option>
+                </select>
+                <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                <select class="select">
+                    <option value="1">Added date</option>
+                    <option value="2">Due date</option>
+                </select>
+                <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending">
+                    <i class="fas fa-sort-amount-down-alt ms-2"></i>
+                </a>
+            </div>
+
             <ul id="goalListId">
                 @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
                 {
-                    <li>@goal</li> // load each incomplete one as a list item
+                   <li>
+                    <p>@goal
+                                    <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                                        <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                            <div class="form-check">
+                                                <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+                                                   aria-label="..." checked />
+                                                   </div>
+                                                   </ul>
+
+                                                   </p> 
+                    </li>
+                   
                 }
             </ul>
         </div>
+         
         <div class="col-2">&nbsp;</div>
         <div class="col-5 card" style="border-radius: 0.5rem;">
             <div class="card-header" id="mentor">Mentor</div>
@@ -82,13 +138,68 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="row py-1">
         <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
-            <h2>Tasks</h2>
+            <p class="h1 text-center text-primary">
+                <i class="fas fa-check-square me-1"></i>
+                <u>Tasks</u>
+            </p>
+            <div class="pb-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                                   placeholder="Add new...">
+                            <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
+                                <i class="fas fa-calendar-alt fa-lg me-3"></i>
+                            </a>
+                            <div>
+                                <button type="button" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                <p class="small mb-0 me-2 text-muted">Filter</p>
+                <select class="select">
+                    <option value="1">All</option>
+                    <option value="2">Completed</option>
+                    <option value="3">Active</option>
+                    <option value="4">Has due date</option>
+                </select>
+                <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                <select class="select">
+                    <option value="1">Added date</option>
+                    <option value="2">Due date</option>
+                </select>
+                <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending">
+                    <i class="fas fa-sort-amount-down-alt ms-2"></i>
+                </a>
+            </div>
+
             <ul id="taskListId">
                 @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
                 {
-                    <li>@task</li> // load each incomplete one as a list item
+                    <li>@task
+                        <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+
+                                <div class="form-check">
+                                    <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+                                       aria-label="..." checked />
+                                </div>
+                        </ul>
+
+
+                    </li>
+                    // load each incomplete one as a list item
                 }
             </ul>
         </div>
