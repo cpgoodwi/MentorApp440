@@ -1,0 +1,48 @@
+#navBar {
+    background-color: #5A99D5;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+#flomentoTitle{
+    color: white;
+    font-size: xxx-large;
+    font-weight: bold;
+    font-family: 'Roboto', serif;
+}
+
+.navBarLinks{
+    color: white;
+}
+
+#profilePic{
+    float: left;
+}
+
+.mainBody{
+    background: rgb(0,200,255);
+    background: linear-gradient(0deg, rgba(0,200,255,1) 0%, rgba(130,255,250,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+#editButton{
+    background-color: #FFC627;
+    color: #8C1D40;
+}
+
+.dash{
+    background-color: #d2d2d7;
+}
+
+#mentor{
+    background-color: #1374D1;
+    color: white;
+}
+
+/*Pop Up css*/
+.popup{
+    background-color: #5A99D5;
+    width: 40%;
+    margin: auto;
+}

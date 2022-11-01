@@ -19,51 +19,101 @@
 
 @*TODO: display user dashboard page*@
 
-@if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is viewing themselves
-{
-    // allow them to logout
-    <a asp-controller="Home" asp-action="LogOut">Log Out</a>
-}
-else
-{
-    // allow them to return to their dashboard
-    <a asp-controller="Home" asp-action="ToDashboard">Return to Dashboard</a>
-}
+<nav class="navbar navbar-light" id="navBar">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse d-inline-flex justify-content-around" id="navbarNav">
+            <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
+            <ul class="navbar-nav list-group-horizontal">
+                <li class="nav-item">
+                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard">Dashboard</a>
+                </li>
+                <li class="nav-item offset-1">
+                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut">LogOut</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>    
 
-<h1>@user.Name</h1>
-<p>@user.Desc</p>
+@* @if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is viewing themselves *@
+@* { *@
+@*     // allow them to logout *@
+@*     <a asp-controller="Home" asp-action="LogOut">Log Out</a> *@
+@* } *@
+@* else *@
+@* { *@
+@*     // allow them to return to their dashboard *@
+@*     <a asp-controller="Home" asp-action="ToDashboard">Return to Dashboard</a> *@
+@* } *@
 
-@if (user.IsNew()) // This is just a test to load different parts based on if the user is new or not
-{
-    <p>This user is new.</p>
-}
-else
-{
-    <p>This user is peer.</p>
-}
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-5">
+            <img src="~/lib/Images/Flomento.png" class="img-thumbnail" id="profilePic" alt="" width="150px" height="150px"/>
+            @* <div id="profileInfo"> *@
+                <h1 class="offset-4">@user.Name</h1>
+                <p class="offset-4">@user.Desc</p>
+            @* </div> *@
+        </div>
+        <div class="col-2">&nbsp;</div>
+        <div class="col-5 d-grid gap-2">
+            <button type="button" class="btn" id="editButton">Edit Profile</button>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
+            <h2>Goals</h2>
+            <ul id="goalListId">
+                @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
+                {
+                    <li>@goal</li> // load each incomplete one as a list item
+                }
+            </ul>
+        </div>
+        <div class="col-2">&nbsp;</div>
+        <div class="col-5 card" style="border-radius: 0.5rem;">
+            <div class="card-header" id="mentor">Mentor</div>
+            <div class="card-body">
+                <ul class="card-text">
+                    <li>Peer</li>
+                    <li>Peer</li>
+                    <li>Peer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
+            <h2>Tasks</h2>
+            <ul id="taskListId">
+                @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
+                {
+                    <li>@task</li> // load each incomplete one as a list item
+                }
+            </ul>
+        </div>
+    </div>
+</div>
 
-@if (user.HasMentor()) // if mentor property of user is not null
-{
-    // display a link to the mentor's profile
-    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@user.GetMentorId()">@user.GetMentorName()</a>
-}
 
-@if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is on own profile
-{
-    // allow them to post a goal
-    <textarea placeholder="create a new goal"></textarea>
-}
+@* @if (user.IsNew()) // This is just a test to load different parts based on if the user is new or not *@
+@* { *@
+@*     <p>This user is new.</p> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <p>This user is peer.</p> *@
+@* } *@
 
-<ul id="goalListId">
-    @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
-    {
-        <li>@goal</li> // load each incomplete one as a list item
-    }
-</ul>
+@* @if (user.HasMentor()) // if mentor property of user is not null *@
+@* { *@
+@*     // display a link to the mentor's profile *@
+@*     <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@user.GetMentorId()">@user.GetMentorName()</a> *@
+@* } *@
 
-<ul id="taskListId">
-    @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
-    {
-        <li>@task</li> // load each incomplete one as a list item
-    }
-</ul>
+@* @if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is on own profile *@
+@* { *@
+@*     // allow them to post a goal *@
+@*     <textarea placeholder="create a new goal"></textarea> *@
+@* } *@
+
