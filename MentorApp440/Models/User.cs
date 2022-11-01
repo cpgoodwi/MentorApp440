@@ -10,12 +10,15 @@ public class User
     private UserType Type { get; set; }
     private List<Goal> Goals { get; set; }
     private List<Task> Tasks { get; set; }
+    public bool IsAdmin { get; set; }
+
 
     private enum UserType
     {
-        Admin, // 0
-        Newbie, // 1
-        Peer // 2
+        // Admin,
+        Newbie, // 0
+        Peer, // 1
+        Mentor // 2
     }
 
     private class Goal
@@ -42,7 +45,7 @@ public class User
         }
     }
     
-    public User(string userId)
+    public User(int orgId, string userId)
     {
         // TODO: create an object of User pulling info from database given username as ID
         UserId = userId;
@@ -52,7 +55,7 @@ public class User
         {
             Name = "Charley Goodwin";
             Desc = "I am Charley";
-            Mentor = new User("mrk");
+            Mentor = new User(1, "mrk");
             Type = UserType.Newbie;
         } else if (userId.Equals("mrk"))
         {
@@ -76,11 +79,13 @@ public class User
             new Task(true, "This is the third task"),
             new Task(false, "This is the fourth task")
         };
+
+        IsAdmin = false;
     }
 
     public bool IsNew()
     {
-        if (Type != UserType.Admin)
+        if (!IsAdmin)
             return Type == UserType.Newbie;
         return false;
     }
