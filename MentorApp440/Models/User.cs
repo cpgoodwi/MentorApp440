@@ -8,15 +8,14 @@ public class User
     public string Desc { get; set; }
     private User Mentor { get; set; }
     private UserType Type { get; set; }
-    public bool IsAdmin { get; set; }
     private List<Goal> Goals { get; set; }
     private List<Task> Tasks { get; set; }
 
     private enum UserType
     {
-        Newbie, // 0
-        Peer, // 1
-        Mentor // 2
+        Admin, // 0
+        Newbie, // 1
+        Peer // 2
     }
 
     private class Goal
@@ -43,17 +42,17 @@ public class User
         }
     }
     
-    public User(int orgId, string userId)
+    public User(string userId)
     {
-        // TODO: create an object of User pulling info from database given username as ID, and organization ID
+        // TODO: create an object of User pulling info from database given username as ID
         UserId = userId;
         
-        // hardcoded values for testing:
+        // hardcoded values for testing
         if (userId.Equals("charley"))
         {
             Name = "Charley Goodwin";
             Desc = "I am Charley";
-            Mentor = new User(orgId, "mrk");
+            Mentor = new User("mrk");
             Type = UserType.Newbie;
         } else if (userId.Equals("mrk"))
         {
@@ -77,13 +76,11 @@ public class User
             new Task(true, "This is the third task"),
             new Task(false, "This is the fourth task")
         };
-
-        IsAdmin = false;
     }
 
     public bool IsNew()
     {
-        if (!IsAdmin)
+        if (Type != UserType.Admin)
             return Type == UserType.Newbie;
         return false;
     }

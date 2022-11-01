@@ -4,7 +4,13 @@
     - UserId is the username or Id of the user
     - ViewUser is used to select which profile is being viewed
     
+<<<<<<< HEAD
     // TODO: if page is accessed by link, prompt them to log in
+=======
+    TODO: if page is accessed by link, prompt them to log in
+    
+    // TODO: change this to use ViewContext instead of passing session state as view data
+>>>>>>> origin/production
 *@
 
 @{
@@ -14,7 +20,7 @@
     else
         ViewData["Title"] = "Dashboard";
     
-    var user = new User(ViewData["ViewUser"] as string);
+    // var user = new User(1, ViewData["ViewUser"] as string);
 }
 
 @*TODO: display user dashboard page*@
