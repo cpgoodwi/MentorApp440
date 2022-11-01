@@ -16,8 +16,6 @@
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cs
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/staticwebassets.build.json
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/staticwebassets.development.json
-/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/Index.cshtml.rz.scp.css
-/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/User.cshtml.rz.scp.css
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/bundle/MentorApp440.styles.css
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/projectbundle/MentorApp440.bundle.scp.css
@@ -26,60 +24,60 @@
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\appsettings.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.staticwebassets.runtime.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.exe
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.deps.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.runtimeconfig.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.dll
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.pdb
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.AssemblyReference.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfoInputs.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfo.cs
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.CoreCompileInputs.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cs
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Home\User.cshtml.rz.scp.css
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\bundle\MentorApp440.styles.css
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\projectbundle\MentorApp440.bundle.scp.css
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.dll
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\refint\MentorApp440.dll
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.pdb
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.genruntimeconfig.cache
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\ref\MentorApp440.dll
-C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\appsettings.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.staticwebassets.runtime.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.exe
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.deps.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.runtimeconfig.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.dll
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.pdb
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.AssemblyReference.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfoInputs.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfo.cs
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.CoreCompileInputs.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cs
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\bundle\MentorApp440.styles.css
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\projectbundle\MentorApp440.bundle.scp.css
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.dll
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\refint\MentorApp440.dll
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.pdb
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.genruntimeconfig.cache
-C:\Users\charl\Documents\Class Files\cis440\Flomento\MentorApp440\MentorApp440\obj\Debug\net6.0\ref\MentorApp440.dll
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/appsettings.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.staticwebassets.runtime.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.exe
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.deps.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.runtimeconfig.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.dll
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.pdb
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.AssemblyReference.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfoInputs.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfo.cs
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.CoreCompileInputs.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cs
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/User.cshtml.rz.scp.css
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/bundle/MentorApp440.styles.css
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/projectbundle/MentorApp440.bundle.scp.css
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.dll
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/refint/MentorApp440.dll
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
+C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/Index.cshtml.rz.scp.css
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.staticwebassets.runtime.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.exe
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.deps.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.runtimeconfig.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.dll
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.pdb
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.AssemblyReference.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfoInputs.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfo.cs
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.CoreCompileInputs.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cs
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/bundle/MentorApp440.styles.css
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/scopedcss/projectbundle/MentorApp440.bundle.scp.css
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.dll
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/refint/MentorApp440.dll
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
+C:/Users/charl/Documents/Class Files/cis440/Flomento/MentorApp440/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.Development.json
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.json
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.staticwebassets.runtime.json
@@ -106,32 +104,6 @@ C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/obj/Debug/net6.0/refint/Me
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\appsettings.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.staticwebassets.runtime.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.exe
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.deps.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.runtimeconfig.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.dll
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\bin\Debug\net6.0\MentorApp440.pdb
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.AssemblyReference.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfoInputs.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfo.cs
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.CoreCompileInputs.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cs
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\bundle\MentorApp440.styles.css
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\scopedcss\projectbundle\MentorApp440.bundle.scp.css
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.dll
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\refint\MentorApp440.dll
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.pdb
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\MentorApp440.genruntimeconfig.cache
-C:\Users\hughe\Source\Repos\MentorApp440\MentorApp440\obj\Debug\net6.0\ref\MentorApp440.dll
 C:\Users\hughe\source\repos\MentorApp440\3\MentorApp440\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\hughe\source\repos\MentorApp440\3\MentorApp440\bin\Debug\net6.0\appsettings.json
 C:\Users\hughe\source\repos\MentorApp440\3\MentorApp440\bin\Debug\net6.0\MentorApp440.staticwebassets.runtime.json
