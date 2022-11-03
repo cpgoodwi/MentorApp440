@@ -2,8 +2,9 @@
     background-color: #5A99D5;
 }
 
-*{
+* {
     box-sizing: border-box;
+    list-style-type: none;
 }
 
 #flomentoTitle{
@@ -46,3 +47,4 @@
     width: 50%;
     margin: auto;
 }
+

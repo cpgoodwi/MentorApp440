@@ -73,8 +73,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-row align-items-center">
-                            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                                   placeholder="Add new...">
+                            <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
+                                      placeholder="Add new..."></textarea>
                             <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
                                 <i class="fas fa-calendar-alt fa-lg me-3"></i>
                             </a>
@@ -143,8 +143,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-row align-items-center">
-                            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                                   placeholder="Add new...">
+                            <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
+                                      placeholder="Add new..."></textarea>
                             <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
                                 <i class="fas fa-calendar-alt fa-lg me-3"></i>
                             </a>
@@ -179,18 +179,13 @@
             <ul id="taskListId">
                 @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
                 {
-                    <li>@task
-                        <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-                            <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-
-                                <div class="form-check">
-                                    <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                                       aria-label="..." checked />
-                                </div>
-                        </ul>
-
-
+                    <li>
+                        <input type="checkbox" id="taskcheck" />
+                        <label for="taskcheck">@task</label>
                     </li>
+
+
+                    
                     // load each incomplete one as a list item
                 }
             </ul>
