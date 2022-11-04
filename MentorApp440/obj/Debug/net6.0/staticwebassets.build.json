@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yrNQhcH8hGnsXWmFt7Amal9tw1pBz76PdJZHLaDdHUY=",
+  "Hash": "gbRvwYEZGVeg5kfQmn9lcS6Ar+SDlkU/4wz4SLoBso8=",
   "Source": "MentorApp440",
   "BasePath": "_content/MentorApp440",
   "Mode": "Default",
@@ -119,6 +119,40 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\js\\goal.js",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "js/goal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\goal.js"
+    },
+    {
+      "Identity": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\js\\peer.js",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "js/peer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\peer.js"
+    },
+    {
       "Identity": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\js\\site.js",
       "SourceId": "MentorApp440",
       "SourceType": "Discovered",
@@ -134,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\js\\task.js",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "js/task.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\task.js"
     },
     {
       "Identity": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\2\\MentorApp440\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
