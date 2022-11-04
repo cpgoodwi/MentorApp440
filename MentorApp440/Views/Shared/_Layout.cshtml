@@ -25,7 +25,7 @@
     @* Pop Up page *@
     @if (!loggedIn)
     {
-        <div class="container py-3 h-100" style="position: absolute;">
+        <div class="container-fluid py-3 justify-content-center align-items-center h-100" style="position: absolute;">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
                     <div class="card popup" style="border-radius: 1rem;">
@@ -36,7 +36,7 @@
                                     <input name="username" id="usernameField" type="text" class="form-control" placeholder="username" style="border-radius: 0.5rem;" required>
                                 </div>
                                 <div class="row pt-3">
-                                    <div class="d-grid gap-2 col-3 mx-auto">
+                                    <div class="d-grid gap-2 col-4 mx-auto">
                                         <button class="btn btn-primary" id="logInButton" type="submit">Log In</button>
                                     </div>
                                 </div>

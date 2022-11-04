@@ -14,10 +14,6 @@
     font-family: 'Roboto', serif;
 }
 
-.navBarLinks{
-    color: white;
-}
-
 #profilePic{
     float: left;
 }
@@ -32,6 +28,11 @@
     color: #8C1D40;
 }
 
+#editButton:hover{
+    background-color: #8C1D40;
+    color: #FFC627;
+}
+
 .dash{
     background-color: #d2d2d7;
 }
@@ -44,7 +45,7 @@
 /*Pop Up css*/
 .popup{
     background-color: #5A99D5;
-    width: 50%;
+    width: 40%;
     margin: auto;
 }
 
