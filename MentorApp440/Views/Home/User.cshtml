@@ -20,18 +20,15 @@
 @*TODO: display user dashboard page*@
 
 <nav class="navbar navbar-light" id="navBar">
-    <div class="container-fluid">
-        <div class="navbar-collapse collapse d-inline-flex justify-content-around" id="navbarNav">
-            <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
-            <ul class="navbar-nav list-group-horizontal">
-                <li class="nav-item">
-                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard">Dashboard</a>
-                </li>
-                <li class="nav-item offset-1">
-                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut">LogOut</a>
-                </li>
-            </ul>
-        </div>
+    <div class="container">
+        <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
+        <ul class="navbar-nav list-group-horizontal">
+            <li class="nav-item">
+                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a></li>
+            <li class="nav-item offset-1">
+                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut" style="color: white;">LogOut</a>
+            </li>
+        </ul>
     </div>
 </nav>    
 
@@ -48,22 +45,22 @@
 
 <div class="container mt-5">
     <div class="row align-items-center">
-        <div class="col-5">
+        <div class="col-7">
             <img src="~/lib/Images/Flomento.png" class="img-thumbnail" id="profilePic" alt="" width="150px" height="150px"/>
-            @* <div id="profileInfo"> *@
-                <h1 class="offset-4">@user.Name</h1>
-                <p class="offset-4">@user.Desc</p>
-            @* </div> *@
+            <div id="profileInfo">
+                <h1 class="offset-3">@user.Name</h1>
+                <h6 class="offset-3">@user.Desc</h6>
+            </div>
         </div>
-        <div class="col-2">&nbsp;</div>
-        <div class="col-5 d-grid gap-2">
+        <div class="col-1">&nbsp;</div>
+        <div class="col-4 d-grid gap-2">
             <button type="button" class="btn" id="editButton">Edit Profile</button>
         </div>
     </div>
     
-
+@* Goals row *@
     <div class="row py-3">
-        <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
+        <div class="col-7 bg-light dash" style="border-radius: 0.5rem;">
 
             <p class="h1 text-center text-primary">
                 <i class="fas fa-check-square me-1"></i>
@@ -117,24 +114,29 @@
                 }
             </ul>
         </div>
+        @* <div class="col-2">&nbsp;</div> *@
+        @* <div class="col-5">&nbsp;</div> *@
+
          
-        <div class="col-2">&nbsp;</div>
-        <div class="col-5 card" style="border-radius: 0.5rem;">
-            <div class="card-header" id="mentor">Mentor</div>
-            <div class="card-body">
-                <ul class="card-text">
-                    <li>Peer</li>
-                    <li>Peer</li>
-                    <li>Peer</li>
-                </ul>
+        <div class="col-1">&nbsp;</div>
+        <div class="col-4">
+            <div class="card" style="border-radius: 0.5rem;">
+                <div class="card-header" id="mentor">Mentor</div>
+                <div class="card-body">
+                    <ul class="card-text">
+                        <li>Peer</li>
+                        <li>Peer</li>
+                        <li>Peer</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
-
-    <div class="row py-1">
-        <div class="col-5 bg-light dash" style="border-radius: 0.5rem;">
+@* Task row *@
+    <div class="row py-3">
+        <div class="col-7 bg-light dash" style="border-radius: 0.5rem;">
             <p class="h1 text-center text-primary">
                 <i class="fas fa-check-square me-1"></i>
                 <u>Tasks</u>
@@ -155,9 +157,9 @@
                     </div>
                 </div>
             </div>
-
+    
             <hr class="my-4">
-
+    
             <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                 <p class="small mb-0 me-2 text-muted">Filter</p>
                 <select class="select">
@@ -175,7 +177,7 @@
                     <i class="fas fa-sort-amount-down-alt ms-2"></i>
                 </a>
             </div>
-
+    
             <ul id="taskListId">
                 @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
                 {
@@ -183,14 +185,26 @@
                         <input type="checkbox" id="taskcheck" />
                         <label for="taskcheck">@task</label>
                     </li>
-
-
-                    
+    
+    
+    
                     // load each incomplete one as a list item
                 }
             </ul>
         </div>
-
+        <div class="col-1">&nbsp;</div>
+        @* <div class="col-5"> *@
+        @*     <div class="card" style="border-radius: 0.5rem;"> *@
+        @*         <div class="card-header" id="mentor">Mentor</div> *@
+        @*         <div class="card-body"> *@
+        @*             <ul class="card-text"> *@
+        @*                 <li>Peer</li> *@
+        @*                 <li>Peer</li> *@
+        @*                 <li>Peer</li> *@
+        @*             </ul> *@
+        @*         </div> *@
+        @*     </div> *@
+        @* </div> *@
     </div>
 </div>
 
