@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZmtfJUzGbokYa3NNqsFl+cT86As0rLbbDpSdsi8+NQQ=",
+  "Hash": "/tc9eFUkK4EblkH99Psom1P8Zrg3CncqML8Vs6IYSwU=",
   "Source": "MentorApp440",
   "BasePath": "_content/MentorApp440",
   "Mode": "Default",
@@ -967,6 +967,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/Images/Flomento.png"
+    },
+    {
+      "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/lib/Images/Profile.jpeg",
+      "SourceId": "MentorApp440",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/",
+      "BasePath": "_content/MentorApp440",
+      "RelativePath": "lib/Images/Profile.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/Images/Profile.jpeg"
     },
     {
       "Identity": "/Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
