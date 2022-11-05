@@ -24,34 +24,6 @@
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
 /Users/lujunwei/RiderProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/appsettings.Development.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/appsettings.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.staticwebassets.runtime.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.exe
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.deps.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.runtimeconfig.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.dll
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/bin/Debug/net6.0/MentorApp440.pdb
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.AssemblyReference.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfoInputs.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.AssemblyInfo.cs
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.CoreCompileInputs.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.MvcApplicationPartsAssemblyInfo.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.RazorAssemblyInfo.cs
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/staticwebassets.build.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/staticwebassets.development.json
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/User.cshtml.rz.scp.css
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/bundle/MentorApp440.styles.css
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/projectbundle/MentorApp440.bundle.scp.css
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.dll
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/refint/MentorApp440.dll
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
-C:/Users/CharleyIsCool/Documents/Class stuff/cis440/Flomento/MentorApp440/obj/Debug/net6.0/scopedcss/Views/Home/Index.cshtml.rz.scp.css
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.Development.json
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/appsettings.json
 C:/Users/hughe/Source/Repos/MentorApp440/MentorApp440/bin/Debug/net6.0/MentorApp440.staticwebassets.runtime.json
@@ -225,3 +197,72 @@ C:/Users/hughe/source/repos/MentorApp440/2/MentorApp440/obj/Debug/net6.0/ref/Men
 /Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.pdb
 /Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/MentorApp440.genruntimeconfig.cache
 /Users/mikaelstorm50/Documents/SchoolProjects/MentorApp440/MentorApp440/obj/Debug/net6.0/ref/MentorApp440.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\appsettings.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.staticwebassets.runtime.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.exe
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.deps.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.runtimeconfig.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MentorApp440.pdb
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\K4os.Compression.LZ4.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\K4os.Compression.LZ4.Streams.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\K4os.Hash.xxHash.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\MySql.Data.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\ZstdNet.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\System.Windows.Forms.Ribbon35.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.AssemblyReference.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfoInputs.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.AssemblyInfo.cs
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.CoreCompileInputs.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.RazorAssemblyInfo.cs
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\bundle\MentorApp440.styles.css
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\scopedcss\projectbundle\MentorApp440.bundle.scp.css
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.csproj.CopyComplete
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\refint\MentorApp440.dll
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.pdb
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\MentorApp440.genruntimeconfig.cache
+C:\Users\CharleyIsCool\Documents\Class stuff\cis440\Flomento\MentorApp440\obj\Debug\net6.0\ref\MentorApp440.dll
