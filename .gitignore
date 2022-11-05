@@ -38,3 +38,4 @@ MentorApp440/obj/MentorApp440.csproj.nuget.dgspec.json
 MentorApp440/obj/Debug/net6.0/MentorApp440.GeneratedMSBuildEditorConfig.editorconfig
 MentorApp440/obj/Debug/net6.0/MentorApp440.csproj.AssemblyReference.cache
 MentorApp440/obj/Debug/net6.0/MentorApp440.assets.cache
+.DS_Store
