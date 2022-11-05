@@ -2,6 +2,7 @@
 
 public class User
 {
+
     public string UserId { get; }
     public string Name { get; set; }
     public string Image { get; set; } // string for image url to display their image
@@ -81,6 +82,10 @@ public class User
         };
 
         IsAdmin = false;
+    }
+
+    public User()
+    {
     }
 
     public bool IsNew()
