@@ -44,12 +44,228 @@ public class SqlConnection
                 
     }
 
-    public static List<User> RunUserQuery()
-    {
-        Models.User userViewModel = new Models.User();
-        List<User> userViewModelList = new List<User>();
 
-        return userViewModelList;
+    // This method calls a search all store procedure in the database and stores the data it in a menteeViewModelList
+    public static List<MenteeViewModel> RunMenteeQuery()
+    {
+
+
+        List<MenteeViewModel> menteeViewModelList = new List<MenteeViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            string sqlQuery = "Sprouc_SearchMentee";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                MenteeViewModel menteeViewModel = new MenteeViewModel();
+
+                menteeViewModel.OrgID = Convert.ToInt32(dr["orgId"]);
+                menteeViewModel.MenteeID = Convert.ToInt32(dr["menteeId"]);
+                menteeViewModel.MentorID = Convert.ToInt32(dr["mentorId"]);
+
+                menteeViewModelList.Add(menteeViewModel);
+            }
+
+        }
+
+        else
+        {
+            connection.Close();
+        }
+
+
+        return menteeViewModelList;
+    }
+
+
+    // This method calls a search all store procedure in the database and stores the data it in a organizationViewModelList
+
+    public static List<OrganizationViewModel> RunOrganizationQuery()
+    {
+
+        List<OrganizationViewModel> organizationViewModelList = new List<OrganizationViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+
+            string sqlQuery = "Sprouc_SearchOrganization";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                OrganizationViewModel organizationViewModel = new OrganizationViewModel();
+
+                organizationViewModel.OrgID = Convert.ToInt32(dr["orgId"]);
+                organizationViewModel.OrgName = dr["orgName"].ToString();
+
+                organizationViewModelList.Add(organizationViewModel);
+            }
+        }
+
+        else
+            {
+                connection.Close();
+            }                 
+
+        return organizationViewModelList;
+    }
+
+
+    // This method calls a search all store procedure in the database and stores the data it in a goalViewModelList
+
+    public static List<GoalViewModel> RunGoalQuery()
+    {
+        List<GoalViewModel> goalViewModelList = new List<GoalViewModel>();
+
+
+        if (connection.State == ConnectionState.Open)
+        {
+            string sqlQuery = "Sprouc_SearchGoal";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                GoalViewModel goalViewModel = new GoalViewModel();
+
+                goalViewModel.MemID = Convert.ToInt32(dr["memId"]);
+                goalViewModel.GoalID = Convert.ToInt32(dr["goalID"]);
+                goalViewModel.Goal = dr["goalStr"].ToString();
+                int isCompleteNum = Convert.ToInt32(dr["iscomplete"]);
+                if (isCompleteNum == 1)
+                {
+                    goalViewModel.isComplete = true;
+                }
+
+                goalViewModelList.Add(goalViewModel);
+            }
+        }
+
+        else
+        {
+            connection.Close();
+        }
+
+        return goalViewModelList;
+    }
+
+
+    // Not done with this method
+    // Todo: work on retriving enum from sql to modelList
+    // This method calls a search all store procedure in the database and stores the data it in a memberViewModelList
+
+    public static List<MemberViewModel> RunMemberQuery()
+    {
+        List<MemberViewModel> memberViewModelList = new List<MemberViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            string sqlQuery = "Sprouc_SearchMember";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                MemberViewModel memberViewModel = new MemberViewModel();
+
+
+                memberViewModel.memID = Convert.ToInt32(dr["memId"]);
+                memberViewModel.OrgID = Convert.ToInt32(dr["orgId"]);
+                memberViewModel.UserName = dr["username"].ToString();
+                memberViewModel.FullName = dr["fullname"].ToString();
+                memberViewModel.Description = dr["description"].ToString();
+                memberViewModel.Mentor = dr["mentor"].ToString();
+                int isOrgAdminNum = Convert.ToInt32(dr["orgadmin"]);
+                if (isOrgAdminNum == 1)
+                {
+                    memberViewModel.isOrgAdmin = true;
+                }
+
+                memberViewModelList.Add(memberViewModel);
+                                               
+            }
+        }
+
+        else
+        {
+            connection.Close();
+        }
+
+
+        return memberViewModelList;
+    }
+
+
+    // This method calls a search all store procedure in the database and stores the data it in a taskViewModelList
+
+    public static List<TaskViewModel> RunTaskQuery()
+    {
+        List<TaskViewModel> taskViewModelList = new List<TaskViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            string sqlQuery = "Sprouc_SearchTask";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                TaskViewModel taskViewModel = new TaskViewModel();
+
+                taskViewModel.MemID = Convert.ToInt32(dr["memId"]);
+                taskViewModel.MentorID = Convert.ToInt32(dr["mentorId"]);
+                taskViewModel.TaskID = Convert.ToInt32(dr["taskId"]);
+                taskViewModel.Task = dr["taskStr"].ToString();
+                int isCompleteNum = Convert.ToInt32(dr["iscomplete"]);
+                if (isCompleteNum == 1)
+                {
+                    taskViewModel.isComplete = true;
+                }
+
+                taskViewModelList.Add(taskViewModel);
+            }
+        }
+
+        else
+        {
+            connection.Close();
+        }
+
+        return taskViewModelList;
 
     }
 }
