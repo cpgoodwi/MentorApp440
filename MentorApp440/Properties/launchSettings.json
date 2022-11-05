@@ -11,7 +11,7 @@
     "MentorApp440": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:21996",
+      "applicationUrl": "http://localhost:48095",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
