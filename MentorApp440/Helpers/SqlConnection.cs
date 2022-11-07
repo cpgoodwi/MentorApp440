@@ -6,11 +6,11 @@ using MySql.Data.MySqlClient;
 using MentorApp440.Models;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
+
 namespace MentorApp440.Helpers;
 
 public class SqlConnection
 {
-
     private static MySqlConnection connection;
     private static MySqlCommand cmd = null;
     private static DataTable dt;
@@ -19,7 +19,7 @@ public class SqlConnection
 
 
     // This class builds a string connection and uses it to connect to the database.
-    // It returns a string that tells you if the connect is sucessful and send it to the controller
+    // It returns a string that tells you if the connect is successful and send it to the controller
     public static string EstablishConnection()
     {
         string ConnectionResult;
@@ -41,15 +41,12 @@ public class SqlConnection
         }
 
         return ConnectionResult;
-                
     }
 
 
     // This method calls a search all store procedure in the database and stores the data it in a menteeViewModelList
     public static List<MenteeViewModel> RunMenteeQuery()
     {
-
-
         List<MenteeViewModel> menteeViewModelList = new List<MenteeViewModel>();
 
         if (connection.State == ConnectionState.Open)
@@ -74,7 +71,6 @@ public class SqlConnection
 
                 menteeViewModelList.Add(menteeViewModel);
             }
-
         }
 
         else
@@ -91,12 +87,10 @@ public class SqlConnection
 
     public static List<OrganizationViewModel> RunOrganizationQuery()
     {
-
         List<OrganizationViewModel> organizationViewModelList = new List<OrganizationViewModel>();
 
         if (connection.State == ConnectionState.Open)
         {
-
             string sqlQuery = "Sprouc_SearchOrganization";
             using var cmd = new MySqlCommand(sqlQuery, connection);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -119,9 +113,9 @@ public class SqlConnection
         }
 
         else
-            {
-                connection.Close();
-            }                 
+        {
+            connection.Close();
+        }
 
         return organizationViewModelList;
     }
@@ -132,7 +126,6 @@ public class SqlConnection
     public static List<GoalViewModel> RunGoalQuery()
     {
         List<GoalViewModel> goalViewModelList = new List<GoalViewModel>();
-
 
         if (connection.State == ConnectionState.Open)
         {
@@ -173,7 +166,7 @@ public class SqlConnection
 
 
     // Not done with this method
-    // Todo: work on retriving enum from sql to modelList
+    // Todo: work on retrieving enum from sql to modelList
     // This method calls a search all store procedure in the database and stores the data it in a memberViewModelList
 
     public static List<MemberViewModel> RunMemberQuery()
@@ -210,7 +203,6 @@ public class SqlConnection
                 }
 
                 memberViewModelList.Add(memberViewModel);
-                                               
             }
         }
 
@@ -266,6 +258,5 @@ public class SqlConnection
         }
 
         return taskViewModelList;
-
     }
 }
