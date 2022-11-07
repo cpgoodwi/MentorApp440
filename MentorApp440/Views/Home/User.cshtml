@@ -1,4 +1,6 @@
-﻿@*
+﻿@using MentorApp440.Session
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@*
     ViewData:
     - Title is just the title of the page
     - UserId is the username or Id of the user
@@ -8,57 +10,69 @@
 *@
 
 @{
-    // If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
+    /*// If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
     if (!(ViewData["UserId"] as string).Equals(ViewData["ViewUser"] as string))
         ViewData["Title"] = $"{ViewData["ViewUser"]} - Profile";
     else
-        ViewData["Title"] = "Dashboard";
+        ViewData["Title"] = "Dashboard";*/
+
+    // var user = new User(1, ViewData["ViewUser"] as string);
+
+    var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+    var loggedIn = !string.IsNullOrWhiteSpace(currUser);
+    var viewUser = new User(1, ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
     
-    var user = new User(1, ViewData["ViewUser"] as string);
+    if (!(currUser.Equals(viewUser.UserId)))
+        ViewData["Title"] = $"{viewUser.UserId} - Profile";
+    else
+        ViewData["Title"] = "Dashboard";
 }
 
-@*TODO: display user dashboard page*@
+<link rel="stylesheet" href="~/css/User.css" asp-append-version="true"/>
 
 <nav class="navbar navbar-light" id="navBar">
     <div class="container">
         <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
         <ul class="navbar-nav list-group-horizontal">
             <li class="nav-item">
-                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a></li>
+                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a>
+            </li>
             <li class="nav-item offset-1">
                 <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut" style="color: white;">LogOut</a>
             </li>
         </ul>
     </div>
-</nav>    
-
-@* @if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is viewing themselves *@
-@* { *@
-@*     // allow them to logout *@
-@*     <a asp-controller="Home" asp-action="LogOut">Log Out</a> *@
-@* } *@
-@* else *@
-@* { *@
-@*     // allow them to return to their dashboard *@
-@*     <a asp-controller="Home" asp-action="ToDashboard">Return to Dashboard</a> *@
-@* } *@
+</nav>
 
 <div class="container mt-5">
     <div class="row align-items-center">
         <div class="col-7">
             <img src="~/lib/Images/Profile.jpeg" class="img-thumbnail" id="profilePic" alt="" width="150px" height="150px"/>
             <div id="profileInfo">
-                <h1 class="offset-3">@user.Name</h1>
-                <h6 class="offset-3">@user.Desc</h6>
+                <h1 class="offset-3">@viewUser.Name</h1>
+                <h6 class="offset-3">@viewUser.Desc</h6>
             </div>
         </div>
         <div class="col-1">&nbsp;</div>
-        <div class="col-4 d-grid gap-2">
-            <button type="button" class="btn" id="editButton">Edit Profile</button>
-        </div>
+        
+        @if (loggedIn)
+        {
+            if (currUser.Equals(viewUser.UserId))
+            {
+                <div class="col-4 d-grid gap-2">
+                    <button type="button" class="btn" id="editButton">Edit Profile</button>
+                </div>
+            }
+            else
+            {
+                <div class="col-4 d-grid gap-2">
+                    <button type="button" class="btn" id="msgButton">Message (NYI)</button>
+                </div>
+            }
+        }
     </div>
-    
-@* Goals row *@
+
+    @* Goals row *@
     <div class="row py-3">
         <div class="col-7 bg-light dash" style="border-radius: 0.5rem;">
 
@@ -104,7 +118,7 @@
             </div>
 
             <ul id="goalListId">
-                @foreach (var goal in user.ListGoals()) // iterate through ViewUser's goal list
+                @foreach (var goal in viewUser.ListGoals()) // iterate through ViewUser's goal list
                 {
                     // TODO: fix id and names for items so they can be functional, also add them to task list
                     <li>
@@ -117,11 +131,13 @@
         @* <div class="col-2">&nbsp;</div> *@
         @* <div class="col-5">&nbsp;</div> *@
 
-         
+
         <div class="col-1">&nbsp;</div>
         <div class="col-4">
             <div class="card" style="border-radius: 0.5rem;">
-                <div class="card-header" id="mentor">Mentor</div>
+                <div class="card-header" id="mentor">
+                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorName()</a>
+                </div>
                 <div class="card-body">
                     <ul class="card-text">
                         <li>Peer</li>
@@ -131,10 +147,10 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
-@* Task row *@
+    @* Task row *@
     <div class="row py-3">
         <div class="col-7 bg-light dash" style="border-radius: 0.5rem;">
             <p class="h1 text-center text-primary">
@@ -157,9 +173,9 @@
                     </div>
                 </div>
             </div>
-    
+
             <hr class="my-4">
-    
+
             <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                 <p class="small mb-0 me-2 text-muted">Filter</p>
                 <select class="select">
@@ -177,17 +193,16 @@
                     <i class="fas fa-sort-amount-down-alt ms-2"></i>
                 </a>
             </div>
-    
+
             <ul id="taskListId">
-                @foreach (var task in user.ListTasks()) // iterate through ViewUser's task list
+                @foreach (var task in viewUser.ListTasks()) // iterate through ViewUser's task list
                 {
                     <li>
-                        <input type="checkbox" id="taskcheck" />
+                        <input type="checkbox" id="taskcheck"/>
                         <label for="taskcheck">@task</label>
                     </li>
-    
-    
-    
+
+
                     // load each incomplete one as a list item
                 }
             </ul>
@@ -229,4 +244,3 @@
 @*     // allow them to post a goal *@
 @*     <textarea placeholder="create a new goal"></textarea> *@
 @* } *@
-

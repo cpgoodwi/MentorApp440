@@ -17,9 +17,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-      
         return View();
-            
     }
 
     /* LogOut()
@@ -47,14 +45,17 @@ public class HomeController : Controller
         if (!string.IsNullOrWhiteSpace(username))
         {
             HttpContext.Session.Set(SessionVariables.SessionKeyUserId, username);
-            HttpContext.Session.Set(SessionVariables.SessionKeySessionId, Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
+            HttpContext.Session.Set(SessionVariables.SessionKeySessionId,
+                Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
 
             ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
             ViewData["ViewUser"] = ViewData["UserId"];
 
+            HttpContext.Session.Set(SessionVariables._Viewing, username);
+
             // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
         }
-        
+
         if (username.Equals("admin")) // if username in admin return admin view
             return View("Admin");
         else // if username in employee return standard user view
@@ -84,9 +85,12 @@ public class HomeController : Controller
     {
         ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
         ViewData["ViewUser"] = username;
+        
+        HttpContext.Session.Set(SessionVariables._Viewing, new User(1, username));
+        
         return View("User");
     }
-    
+
     public IActionResult Privacy()
     {
         return View();
