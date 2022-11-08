@@ -86,7 +86,8 @@ public class HomeController : Controller
         ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
         ViewData["ViewUser"] = username;
         
-        HttpContext.Session.Set(SessionVariables._Viewing, new User(1, username));
+        // HttpContext.Session.Set(SessionVariables._Viewing, new User(1, username));
+        HttpContext.Session.Set(SessionVariables._Viewing, username);
         
         return View("User");
     }
