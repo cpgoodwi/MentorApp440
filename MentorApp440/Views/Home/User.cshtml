@@ -20,7 +20,8 @@
 
     var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
     var loggedIn = !string.IsNullOrWhiteSpace(currUser);
-    var viewUser = new User(1, ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
+    var viewUser = new User(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
+    var viewSelf = currUser.Equals(viewUser.UserId);
     
     if (!(currUser.Equals(viewUser.UserId)))
         ViewData["Title"] = $"{viewUser.UserId} - Profile";
@@ -57,7 +58,7 @@
         
         @if (loggedIn)
         {
-            if (currUser.Equals(viewUser.UserId))
+            if (viewSelf)
             {
                 <div class="col-4 d-grid gap-2">
                     <button type="button" class="btn" id="editButton">Edit Profile</button>
@@ -78,24 +79,28 @@
 
             <p class="h1 text-center text-primary">
                 <i class="fas fa-check-square me-1"></i>
-                <u>Goals</u>
+                <u>Goals</u> @* what is a <u> element? *@
             </p>
-            <div class="pb-1">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-row align-items-center">
-                            <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
+            @* allow user to add new goals to self if on their own profile *@
+            @if (viewSelf)
+            {
+                <div class="pb-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-row align-items-center">
+                                <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
                                       placeholder="Add new..."></textarea>
-                            <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
-                                <i class="fas fa-calendar-alt fa-lg me-3"></i>
-                            </a>
-                            <div>
-                                <button type="button" class="btn btn-primary">Add</button>
+                                <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
+                                    <i class="fas fa-calendar-alt fa-lg me-3"></i>
+                                </a>
+                                <div>
+                                    <button type="button" class="btn btn-primary">Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
             <hr class="my-4">
 
@@ -128,18 +133,16 @@
                 }
             </ul>
         </div>
-        @* <div class="col-2">&nbsp;</div> *@
-        @* <div class="col-5">&nbsp;</div> *@
-
 
         <div class="col-1">&nbsp;</div>
+        
+        @* TODO: add styling to mentor section *@
         <div class="col-4">
             <div class="card" style="border-radius: 0.5rem;">
                 <div class="card-header" id="mentor">
                     @if (viewUser.HasMentor())
                     {
                         <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorName()</a>
-                        <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorId()</a>
                     }
                     else
                     {
@@ -165,22 +168,25 @@
                 <i class="fas fa-check-square me-1"></i>
                 <u>Tasks</u>
             </p>
-            <div class="pb-1">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-row align-items-center">
-                            <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
+            @if (viewUser.IsMentee(currUser))
+            {
+                <div class="pb-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-row align-items-center">
+                                <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1"
                                       placeholder="Add new..."></textarea>
-                            <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
-                                <i class="fas fa-calendar-alt fa-lg me-3"></i>
-                            </a>
-                            <div>
-                                <button type="button" class="btn btn-primary">Add</button>
+                                <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
+                                    <i class="fas fa-calendar-alt fa-lg me-3"></i>
+                                </a>
+                                <div>
+                                    <button type="button" class="btn btn-primary">Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
             <hr class="my-4">
 
@@ -210,45 +216,10 @@
                         <label for="taskcheck">@task</label>
                     </li>
 
-
                     // load each incomplete one as a list item
                 }
             </ul>
         </div>
         <div class="col-1">&nbsp;</div>
-        @* <div class="col-5"> *@
-        @*     <div class="card" style="border-radius: 0.5rem;"> *@
-        @*         <div class="card-header" id="mentor">Mentor</div> *@
-        @*         <div class="card-body"> *@
-        @*             <ul class="card-text"> *@
-        @*                 <li>Peer</li> *@
-        @*                 <li>Peer</li> *@
-        @*                 <li>Peer</li> *@
-        @*             </ul> *@
-        @*         </div> *@
-        @*     </div> *@
-        @* </div> *@
     </div>
 </div>
-
-
-@* @if (user.IsNew()) // This is just a test to load different parts based on if the user is new or not *@
-@* { *@
-@*     <p>This user is new.</p> *@
-@* } *@
-@* else *@
-@* { *@
-@*     <p>This user is peer.</p> *@
-@* } *@
-
-@* @if (user.HasMentor()) // if mentor property of user is not null *@
-@* { *@
-@*     // display a link to the mentor's profile *@
-@*     <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@user.GetMentorId()">@user.GetMentorName()</a> *@
-@* } *@
-
-@* @if (user.UserId.Equals(ViewData["UserId"] as string)) // if user is on own profile *@
-@* { *@
-@*     // allow them to post a goal *@
-@*     <textarea placeholder="create a new goal"></textarea> *@
-@* } *@

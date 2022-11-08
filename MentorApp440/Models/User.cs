@@ -97,28 +97,12 @@ public class User
 
     public List<string> ListGoals()
     {
-        List<string> goalList = new List<string>();
-        
-        foreach (var goal in Goals)
-        {
-            if (!goal.Completed)
-                goalList.Add(goal.GoalStr);
-        }
-
-        return goalList;
+        return (from goal in Goals where !goal.Completed select goal.GoalStr).ToList();
     }
     
     public List<string> ListTasks()
     {
-        List<string> taskList = new List<string>();
-        
-        foreach (var task in Tasks)
-        {
-            if (!task.Completed)
-                taskList.Add(task.TaskStr);
-        }
-
-        return taskList;
+        return (from task in Tasks where !task.Completed select task.TaskStr).ToList();
     }
 
     public string GetMentorId()
@@ -134,5 +118,10 @@ public class User
     public bool HasMentor()
     {
         return !(Mentor == null);
+    }
+    
+    public bool IsMentee(string userId)
+    {
+        return HasMentor() && userId.Equals(GetMentorId);
     }
 }
