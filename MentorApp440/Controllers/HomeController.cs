@@ -27,7 +27,7 @@ public class HomeController : Controller
     [Route("Index")]
     public IActionResult LogOut()
     {
-        HttpContext.Session.Set(SessionVariables.SessionKeyUserId, "");
+        HttpContext.Session.Set(SessionVariables._Username, "");
         HttpContext.Session.Set(SessionVariables.SessionKeySessionId, "");
         
         HttpContext.Session.Set(SessionVariables._OrgId, "");
@@ -41,20 +41,21 @@ public class HomeController : Controller
      */
     [Route("Home/Dashboard")]
     [HttpPost]
-    public IActionResult LogIn(int orgId, string username)
+    public IActionResult LogIn(int orgSelect, string username)
     {
         if (!string.IsNullOrWhiteSpace(username))
         {
-            HttpContext.Session.Set(SessionVariables.SessionKeyUserId, username);
+            HttpContext.Session.Set(SessionVariables._Username, username);
             HttpContext.Session.Set(SessionVariables.SessionKeySessionId,
                 Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
 
-            ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+            ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables._Username);
             ViewData["ViewUser"] = ViewData["UserId"];
 
             HttpContext.Session.Set(SessionVariables._Viewing, username);
             
-            HttpContext.Session.Set(SessionVariables._OrgId, orgId);
+            // HttpContext.Session.Set(SessionVariables._OrgId, int.Parse(orgId));
+            HttpContext.Session.Set(SessionVariables._OrgId, orgSelect);
 
             // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
         }
@@ -72,7 +73,7 @@ public class HomeController : Controller
     [Route("Home/Dashboard")]
     public IActionResult ToDashboard()
     {
-        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables._Username);
         ViewData["ViewUser"] = ViewData["UserId"];
 
         return View("User");
@@ -86,7 +87,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult SelectUser(string username)
     {
-        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+        ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables._Username);
         ViewData["ViewUser"] = username;
         
         // HttpContext.Session.Set(SessionVariables._Viewing, new User(1, username));

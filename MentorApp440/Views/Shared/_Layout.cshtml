@@ -1,7 +1,7 @@
 ﻿@using MentorApp440.Session
 @using MentorApp440.Helpers
 @{
-    var loggedIn = !string.IsNullOrWhiteSpace(ViewContext.HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId));
+    var loggedIn = !string.IsNullOrWhiteSpace(ViewContext.HttpContext.Session.Get<string>(SessionVariables._Username));
 }
 
 <!DOCTYPE html>
@@ -18,10 +18,6 @@
     @* <link rel="stylesheet" href="~/MentorApp440.styles.css" asp-append-version="true"/> *@
 </head>
 <body class="mainBody">
-@* <div class="topnav"> *@
-@*     <h1 id="companyName">Flomento</h1> *@
-@* </div> *@
-@* <h1>@ViewData["Username"]</h1> *@
 <main>
     @* Pop Up page *@
     @if (!loggedIn)

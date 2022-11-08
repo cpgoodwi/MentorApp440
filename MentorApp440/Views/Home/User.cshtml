@@ -1,5 +1,6 @@
 ﻿@using MentorApp440.Session
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using MentorApp440.Helpers
 @*
     ViewData:
     - Title is just the title of the page
@@ -18,13 +19,14 @@
 
     // var user = new User(1, ViewData["ViewUser"] as string);
 
-    var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId);
+    var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables._Username);
     var loggedIn = !string.IsNullOrWhiteSpace(currUser);
-    var viewUser = new User(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
-    var viewSelf = currUser.Equals(viewUser.UserId);
+    // var viewUser = new User(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
+    var viewUser = SqlConnection.ConstructUserFromDatabase(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
+    var viewSelf = currUser.Equals(viewUser.Username);
     
-    if (!(currUser.Equals(viewUser.UserId)))
-        ViewData["Title"] = $"{viewUser.UserId} - Profile";
+    if (!(currUser.Equals(viewUser.Username)))
+        ViewData["Title"] = $"{viewUser.Username} - Profile";
     else
         ViewData["Title"] = "Dashboard";
 }
