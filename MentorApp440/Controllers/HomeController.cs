@@ -41,7 +41,6 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult LogIn(string username)
     {
-        // TODO: add username to session variables
         if (!string.IsNullOrWhiteSpace(username))
         {
             HttpContext.Session.Set(SessionVariables.SessionKeyUserId, username);

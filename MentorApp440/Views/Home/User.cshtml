@@ -136,8 +136,15 @@
         <div class="col-4">
             <div class="card" style="border-radius: 0.5rem;">
                 <div class="card-header" id="mentor">
-                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorName()</a>
-                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorId()</a>
+                    @if (viewUser.HasMentor())
+                    {
+                        <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorName()</a>
+                        <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorId()</a>
+                    }
+                    else
+                    {
+                        <p>user has no mentor</p>
+                    }
                 </div>
                 <div class="card-body">
                     <ul class="card-text">
