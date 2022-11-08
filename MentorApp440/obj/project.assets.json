@@ -2866,19 +2866,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hughe\\.nuget\\packages\\": {}
+    "C:\\Users\\CharleyIsCool\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\5\\MentorApp440\\MentorApp440.csproj",
+      "projectUniqueName": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj",
       "projectName": "MentorApp440",
-      "projectPath": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\5\\MentorApp440\\MentorApp440.csproj",
-      "packagesPath": "C:\\Users\\hughe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hughe\\source\\repos\\MentorApp440\\5\\MentorApp440\\obj\\",
+      "projectPath": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\MentorApp440.csproj",
+      "packagesPath": "C:\\Users\\CharleyIsCool\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CharleyIsCool\\Documents\\Class stuff\\cis440\\Flomento\\MentorApp440\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\hughe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CharleyIsCool\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2886,6 +2891,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2940,7 +2946,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   },
