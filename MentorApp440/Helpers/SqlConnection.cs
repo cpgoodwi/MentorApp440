@@ -84,9 +84,10 @@ public class SqlConnection
 
 
     // This method calls a search all store procedure in the database and stores the data it in a organizationViewModelList
-
     public static List<OrganizationViewModel> RunOrganizationQuery()
     {
+        EstablishConnection();
+        
         List<OrganizationViewModel> organizationViewModelList = new List<OrganizationViewModel>();
 
         if (connection.State == ConnectionState.Open)
@@ -101,15 +102,7 @@ public class SqlConnection
 
             da.Fill(dt);
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                OrganizationViewModel organizationViewModel = new OrganizationViewModel();
-
-                organizationViewModel.OrgID = Convert.ToInt32(dr["orgId"]);
-                organizationViewModel.OrgName = dr["orgName"].ToString();
-
-                organizationViewModelList.Add(organizationViewModel);
-            }
+            organizationViewModelList.AddRange(from DataRow dr in dt.Rows select new OrganizationViewModel(Convert.ToInt32(dr["orgId"]), dr["orgName"].ToString()));
         }
 
         else
@@ -258,5 +251,29 @@ public class SqlConnection
         }
 
         return taskViewModelList;
+    }
+
+    // TODO: update queries to look like this
+    // queries ORGANIZATION table to return a list of organizations to display
+    public static List<OrganizationViewModel> ListOrgsQuery()
+    {
+        EstablishConnection();
+
+        var orgList = new List<OrganizationViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = "select * from ORGANIZATION;";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            // row[0] is OrgId and row[1] is OrgName
+            orgList.AddRange(from DataRow row in dt.Rows select new OrganizationViewModel((int)row[0], (string)row[1]));
+        }
+        
+        connection.Close();
+        return orgList;
     }
 }

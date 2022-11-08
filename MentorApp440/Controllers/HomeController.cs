@@ -29,6 +29,8 @@ public class HomeController : Controller
     {
         HttpContext.Session.Set(SessionVariables.SessionKeyUserId, "");
         HttpContext.Session.Set(SessionVariables.SessionKeySessionId, "");
+        
+        HttpContext.Session.Set(SessionVariables._OrgId, "");
 
         return View("Index");
     }
@@ -39,7 +41,7 @@ public class HomeController : Controller
      */
     [Route("Home/Dashboard")]
     [HttpPost]
-    public IActionResult LogIn(string username)
+    public IActionResult LogIn(int orgId, string username)
     {
         if (!string.IsNullOrWhiteSpace(username))
         {
@@ -51,6 +53,8 @@ public class HomeController : Controller
             ViewData["ViewUser"] = ViewData["UserId"];
 
             HttpContext.Session.Set(SessionVariables._Viewing, username);
+            
+            HttpContext.Session.Set(SessionVariables._OrgId, orgId);
 
             // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
         }

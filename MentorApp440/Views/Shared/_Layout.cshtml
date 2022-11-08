@@ -1,4 +1,5 @@
 ﻿@using MentorApp440.Session
+@using MentorApp440.Helpers
 @{
     var loggedIn = !string.IsNullOrWhiteSpace(ViewContext.HttpContext.Session.Get<string>(SessionVariables.SessionKeyUserId));
 }
@@ -32,6 +33,16 @@
                         <div class="card-body p-5 text-center">
                             <h2 class="mb-2" style="color: white">Please Log In</h2>
                             <form asp-controller="Home" asp-action="LogIn">
+                                <div class="input-group w-50 mx-auto">
+                                    <label for="">Please select your organization</label>
+                                    <select name="orgSelect" id="orgSelect" class="select" required>
+                                        <option selected disabled hidden>--</option>
+                                        @foreach (var org in SqlConnection.RunOrganizationQuery())
+                                        {
+                                            <option value=@org.OrgID>@org.OrgName</option>
+                                        }
+                                    </select>
+                                </div>
                                 <div class="input-group w-50 mx-auto">
                                     <input name="username" id="usernameField" type="text" class="form-control" placeholder="username" style="border-radius: 0.5rem;" required>
                                 </div>
