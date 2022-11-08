@@ -3,11 +3,12 @@
 public class User
 {
 
-    public string UserId { get; }
+    public int MemberId { get; }
+    public string Username { get; }
     public string Name { get; set; }
     public string Image { get; set; } // string for image url to display their image
     public string Desc { get; set; }
-    private User Mentor { get; set; }
+    private MentorStruct Mentor { get; set; }
     private UserType Type { get; set; }
     private List<Goal> Goals { get; set; }
     private List<Task> Tasks { get; set; }
@@ -34,6 +35,18 @@ public class User
         }
     }
 
+    private class MentorStruct // should this be class or struct? why doesn't null work if its a struct?
+    {
+        public readonly string Username; // what is readonly??
+        public readonly string Name;
+
+        public MentorStruct(string username)
+        {
+            Username = username;
+            Name = Helpers.SqlConnection.GetMentorNameFromUsername(username);
+        }
+    }
+
     private class Task
     {
         public bool Completed { get; set; }
@@ -45,20 +58,50 @@ public class User
             TaskStr = taskStr;
         }
     }
-    
-    public User(int orgId, string userId)
+
+    public User(int memberId, string username, string name, string desc, string mentorUsername, int type, bool isAdmin)
+    {
+        MemberId = memberId;
+        Username = username;
+        Name = name;
+        // Image = image; // excluding image from scope of sprints
+        Desc = desc;
+        Mentor = new MentorStruct(mentorUsername);
+        Type = (UserType)type;
+        IsAdmin = isAdmin;
+        
+        // task and goals still hardcoded until data table is set up
+        
+        Goals = new List<Goal>
+        {
+            new Goal(false, "This is the first goal"),
+            new Goal(false, "This is the second goal"),
+            new Goal(true, "This is the third goal"),
+            new Goal(false, "This is the fourth goal")
+        };
+        
+        Tasks = new List<Task>
+        {
+            new Task(false, "This is the first task"),
+            new Task(false, "This is the second task"),
+            new Task(true, "This is the third task"),
+            new Task(false, "This is the fourth task")
+        };
+    }
+
+    public User(int orgId, string username)
     {
         // TODO: create an object of User pulling info from database given username as ID
-        UserId = userId;
+        Username = username;
         
         // hardcoded values for testing
-        if (userId.Equals("charley"))
+        if (username.Equals("charley"))
         {
             Name = "Charley Goodwin";
             Desc = "I am Charley";
-            Mentor = new User(1, "mrk");
+            Mentor = new MentorStruct("mrk");
             Type = UserType.Newbie;
-        } else if (userId.Equals("mrk"))
+        } else if (username.Equals("mrk"))
         {
             Name = "Mr. K";
             Desc = "I am Charley's mentor";
@@ -107,7 +150,7 @@ public class User
 
     public string GetMentorId()
     {
-        return Mentor.UserId;
+        return Mentor.Username;
     }
 
     public string GetMentorName()
@@ -117,7 +160,7 @@ public class User
 
     public bool HasMentor()
     {
-        return !(Mentor == null);
+        return !(Mentor is null);
     }
     
     public bool IsMentee(string userId)

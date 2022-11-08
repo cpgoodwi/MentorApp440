@@ -183,7 +183,7 @@ public class SqlConnection
                 MemberViewModel memberViewModel = new MemberViewModel();
 
 
-                memberViewModel.memID = Convert.ToInt32(dr["memId"]);
+                memberViewModel.MemID = Convert.ToInt32(dr["memId"]);
                 memberViewModel.OrgID = Convert.ToInt32(dr["orgId"]);
                 memberViewModel.UserName = dr["username"].ToString();
                 memberViewModel.FullName = dr["fullname"].ToString();
@@ -275,5 +275,52 @@ public class SqlConnection
         
         connection.Close();
         return orgList;
+    }
+
+    public static User ConstructUserFromDatabase(int orgId, string username)
+    {
+        EstablishConnection();
+
+        var memberData = new MemberViewModel();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"select * from MEMBER where OrgId = {orgId} and Username = '{username}'";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            // TODO: make this more efficient than a loop, because we only expect one output in the table
+            foreach (DataRow dr in dt.Rows)
+            {
+                memberData.MemID = (int)dr["memId"];
+                memberData.OrgID = (int)dr["orgId"];
+                memberData.UserName = dr["username"].ToString();
+                memberData.FullName = dr["fullname"].ToString();
+                memberData.Description = dr["description"].ToString();
+                memberData.UserType = (byte)dr["usertype"];
+                memberData.Mentor = dr["mentor"].ToString();
+                memberData.isOrgAdmin = (bool)dr["orgadmin"];
+            }
+        }
+        
+        connection.Close();
+
+        return new User(
+            memberData.MemID,
+            memberData.UserName,
+            memberData.FullName,
+            memberData.Description,
+            memberData.Mentor , // needed to make this a non-recursive reference
+            memberData.UserType,
+            memberData.isOrgAdmin
+            );
+    }
+
+    // TODO: get mentor's name given a username, and maybe a orgId (I can add that param later)
+    public static string GetMentorNameFromUsername(string username)
+    {
+        return "Mentor Man";
     }
 }
