@@ -37,12 +37,21 @@
     <div class="container">
         <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
         <ul class="navbar-nav list-group-horizontal">
-            <li class="nav-item">
-                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a>
-            </li>
-            <li class="nav-item offset-1">
-                <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut" style="color: white;">LogOut</a>
-            </li>
+            @if (loggedIn)
+            {
+                if (viewSelf)
+                {
+                    <li class="nav-item offset-1">
+                        <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut" style="color: white;">LogOut</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a>
+                    </li>
+                }
+            } @* TODO: else add log in pop up toggle? *@
         </ul>
     </div>
 </nav>
