@@ -151,7 +151,7 @@
                 <div class="card-header" id="mentor">
                     @if (viewUser.HasMentor())
                     {
-                        <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()">@viewUser.GetMentorName()</a>
+                        <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@viewUser.GetMentorId()" style="color: white;">@viewUser.GetMentorName()</a>
                     }
                     else
                     {
@@ -166,6 +166,18 @@
                     </ul>
                 </div>
             </div>
+            <div class="py-3">
+                <h3>Goals</h3>
+                <div class="progress bar">
+                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
+            </div>
+            @* <div> *@
+                <h3>Tasks</h3>
+                <div class="progress bar">
+                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                </div>
+            @* </div> *@
         </div>
     </div>
 

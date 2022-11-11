@@ -23,7 +23,7 @@
     @* Pop Up page *@
     @if (!loggedIn)
     {
-        <div class="container-fluid justify-content-center align-items-center h-100" style="position: absolute;">
+        <div class="container-fluid justify-content-center align-items-center h-100 py-1" style="position: absolute;">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
                     <div class="card popup" style="border-radius: 1rem;">
@@ -60,6 +60,7 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/Peer.js" asp-append-version="true"></script>
 <!-- JavaScript Bundle with Popper -->
 @await RenderSectionAsync("Scripts", required: false)
 </body>
