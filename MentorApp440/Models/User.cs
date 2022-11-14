@@ -69,7 +69,7 @@ public class User
         Mentor = new MentorStruct(mentorUsername);
         Type = (UserType)type;
         IsAdmin = isAdmin;
-        
+
         // task and goals still hardcoded until data table is set up
         
         Goals = new List<Goal>
