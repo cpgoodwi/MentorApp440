@@ -31,7 +31,7 @@
                             <h2 class="mb-2" style="color: white">Please Log In</h2>
                             <form asp-controller="Home" asp-action="LogIn">
                                 <div class="input-group justify-content-center w-50 mx-auto">
-                                    <label for="" style="color: white">Select your organization:&nbsp</label>
+                                    <label for="" style="color: white">Select your organization:&nbsp;</label>
                                     <select name="orgSelect" id="orgSelect" class="select mb-2" style="border-radius: 0.5rem;" required>
                                         <option selected disabled hidden>--</option>
                                         @foreach (var org in SqlConnection.RunOrganizationQuery())

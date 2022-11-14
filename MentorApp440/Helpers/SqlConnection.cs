@@ -136,13 +136,13 @@ public class SqlConnection
             {
                 GoalViewModel goalViewModel = new GoalViewModel();
 
-                goalViewModel.MemID = Convert.ToInt32(dr["memId"]);
-                goalViewModel.GoalID = Convert.ToInt32(dr["goalID"]);
+                goalViewModel.MemId = Convert.ToInt32(dr["memId"]);
+                goalViewModel.GoalId = Convert.ToInt32(dr["goalID"]);
                 goalViewModel.GoalStr = dr["goalStr"].ToString();
                 int isCompleteNum = Convert.ToInt32(dr["iscomplete"]);
                 if (isCompleteNum == 1)
                 {
-                    goalViewModel.isComplete = true;
+                    goalViewModel.IsComplete = true;
                 }
 
                 goalViewModelList.Add(goalViewModel);
