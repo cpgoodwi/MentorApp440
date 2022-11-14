@@ -138,7 +138,7 @@ public class SqlConnection
 
                 goalViewModel.MemID = Convert.ToInt32(dr["memId"]);
                 goalViewModel.GoalID = Convert.ToInt32(dr["goalID"]);
-                goalViewModel.Goal = dr["goalStr"].ToString();
+                goalViewModel.GoalStr = dr["goalStr"].ToString();
                 int isCompleteNum = Convert.ToInt32(dr["iscomplete"]);
                 if (isCompleteNum == 1)
                 {
@@ -322,5 +322,33 @@ public class SqlConnection
     public static string GetMentorNameFromUsername(string username)
     {
         return "Mentor Man";
+    }
+
+    public static List<GoalViewModel> GetGoalsFromMemberId(int memId)
+    {
+        EstablishConnection();
+
+        var GoalList = new List<GoalViewModel>();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"select * from GOAL where memId = {memId}";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                GoalList.Add(new GoalViewModel(
+                    (int)dr["memId"],
+                    (int)dr["goalId"],
+                    dr["goalStr"].ToString(),
+                    (bool)dr["iscomplete"]
+                    ));
+            }
+        }
+
+        return GoalList;
     }
 }
