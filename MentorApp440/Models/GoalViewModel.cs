@@ -7,20 +7,20 @@ namespace MentorApp440.Models
 
     public class GoalViewModel
     {
-        public int MemID { get; set; }
+        public int MemId { get; set; }
 
-        public int GoalID { get; set; }
+        public int GoalId { get; set; }
 
-        public string GoalStr { get; set; }
+        public string? GoalStr { get; set; }
 
-        public bool isComplete { get; set; }
+        public bool IsComplete { get; set; }
 
         public GoalViewModel(int memId, int goalId, string goalStr, bool isComplete)
         {
-            MemID = memId;
-            GoalID = goalId;
+            MemId = memId;
+            GoalId = goalId;
             GoalStr = goalStr;
-            this.isComplete = isComplete;
+            IsComplete = isComplete;
         }
     
         public GoalViewModel() {

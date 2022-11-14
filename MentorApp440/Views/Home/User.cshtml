@@ -34,6 +34,10 @@
 
 <link rel="stylesheet" href="~/css/User.css" asp-append-version="true"/>
 
+@* <script type="text/javascript" src="js/Goal.js" async></script> *@
+@* <script type="text/javascript" src="js/Task.js" async></script> *@
+@* <script type="text/javascript" src="js/user.js" async></script> *@
+
 <nav class="navbar  sticky-top navbar-light" id="navBar">
     <div class="container">
         <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
@@ -134,6 +138,13 @@
             <!-- Tabs navs -->
             <ul id="goalListId">
                 @* populate this list with goal items from database *@
+                @foreach (var goal in SqlConnection.GetGoalsFromMemberId(viewUser.MemberId))
+                {
+                    <li>
+                        <input type="checkbox" id="goalcheck-@goal.GoalId"/>
+                        <label for="goalcheck-@goal.GoalId">@goal.GoalStr</label>
+                    </li>
+                }
             </ul>
         </div>
 
@@ -238,12 +249,19 @@
         <div class="col-1">&nbsp;</div>
     </div>
 </div>
-<script type="text/javascript" src="js/user.js"></script>
+
 @section Scripts
 {
-    <script>
+    <script type="text/javascript" src="js/Goal.js"></script>
+    <script type="text/javascript" src="js/Task.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
     
-    $(document).ready(function () {
+    <script type="text/javascript" defer>
+    
+    const goalListElem = document.getElementById("goalListId")
+    const taskListElem = document.getElementById("taskListId")
+    /*
+    $(document).ready(function () {        
         $.ajax({
             type:"GET",
             url: "@Url.Action("GetGoals", "User")",
@@ -252,7 +270,7 @@
             },
             dataType: "json",
             success: function (result) {
-                console.log(result) // TODO: turn this into the goal display
+                hydrateGoals(result)
             },
             error: function (req, status, error) {
                 console.log(req)
@@ -262,5 +280,13 @@
         })
     })
     
+    function hydrateGoals(goalList) {
+        goalListElem.innerHTML = ""
+        console.log(goalList)
+        for (const goal in goalList) {
+            goalListElem.innerHTML += new Goal(goal.goalStr, goal.isComplete).toHTML()
+        }
+    }
+    */
     </script>
 }
