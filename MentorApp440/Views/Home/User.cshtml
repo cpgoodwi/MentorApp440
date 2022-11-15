@@ -105,7 +105,8 @@
                 <div class="pb-1">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex flex-row align-items-center">
+                            <form class="d-flex flex-row align-items-center"
+                                  asp-controller="API" asp-action="PostGoal">
                                 <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1" rows="1"
                                       placeholder="Add new..."></textarea>
                                 <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
@@ -114,7 +115,7 @@
                                 <div>
                                     <button type="button" class="btn btn-primary">Add</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -237,7 +238,7 @@
             <!-- Tabs navs -->
 
             <ul id="taskListId">
-                @foreach (var task in viewUser.ListTasks()) // iterate through ViewUser's task list
+                @*@foreach (var task in viewUser.ListTasks()) // iterate through ViewUser's task list
                 {
                     <li>
                         <input type="checkbox" id="taskcheck"/>
@@ -245,7 +246,7 @@
                     </li>
 
                     // load each incomplete one as a list item
-                }
+                }*@
             </ul>
         </div>
         <div class="col-1">&nbsp;</div>
@@ -258,22 +259,11 @@
 
 @section Scripts
 {
-    <script type="text/javascript" src="~/js/Goal.js" asp-append-version="true" async></script>
-    <script type="text/javascript" src="~/js/Task.js" asp-append-version="true" async></script>
-    <script type="text/javascript" src="~/js/user.js" asp-append-version="true" async></script>
+    <script type="text/javascript" src="~/js/Goal.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/Task.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/user.js" asp-append-version="true"></script>
 
     <script type="text/javascript">
-    
-    // const goalListElem = document.getElementById("goalListId")
-    // const taskListElem = document.getElementById("taskListId")
-    
-    // const userGoalList = []
-    // const pushGoal = (goal) => { userGoalList.push(goal) }
-    // // console.log(userGoalList)
-    //
-    // const userTaskList = []
-    // const pushTask = (goal) => { userTaskList.push(goal) }
-    // // console.log(userTaskList)
     
     $(document).ready(function () {
         // load goals into a js array
@@ -304,6 +294,7 @@
                         // var userTaskList = result
                         // result.forEach(pushTask)
                         // userTaskList = result
+                        loadTasks(result)
                     },
                     error: function (req, status, error) {
                         console.log(req)
@@ -325,7 +316,41 @@
         // console.log("after", userTaskList)
     })
     
-    </script>
+    /*const loadGoals = () => {
+        // let goalList
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetGoals", "API")",
+            data: {
+                memId: @viewUser.MemberId
+            },
+            dataType: "json",
+            success: function (result) {
+                // goalList = result
+                // console.log("from goals ajax", goalList)
+                return result
+            }
+        })
+        // return goalList
+    }*/
     
+    /*const loadTasks = () => {
+        let taskList
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetTasks", "API")",
+            data: {
+                memId: @viewUser.MemberId
+            },
+            dataType: "json",
+            success: function (result) {
+                taskList = result
+            }
+        })
+        return taskList
+    }*/
+    
+    </script>
+
     @* <script type="text/javascript" src="~/js/user.js" asp-append-version="true" defer></script> *@
 }

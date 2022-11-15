@@ -389,4 +389,19 @@ public class SqlConnection
 
         return taskList;
     }
+
+    // TODO: make this add to the database
+    public static void InsertGoal(int memId, string goalStr)
+    {
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"insert into GOAL (memId, goalId, goalStr) values (" +
+                           $"{memId}, (select max(goalId) + 1 from GOAL g where memId = {memId}), {goalStr});";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+        }
+        
+        connection.Close();
+    }
 }
