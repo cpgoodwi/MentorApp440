@@ -9,6 +9,16 @@ class Goal {
     }
     
     toHTML() {
-        return `<li>GOAL</li>`
+        return (`
+            <li>
+                <input type="checkbox" id="goalcheck-${this.goalId}" ${this.isComplete ? 'checked' : ''} onchange="Goal.check(${this.memId},${this.goalId})" />
+                <label for="goalcheck-${this.goalId}">${this.goalStr}</label>
+            </li>
+        `)
+    }
+    
+    static check(memId, goalId) {
+        // change the status of the item in the server
+        console.log("change status", memId, goalId)
     }
 }
