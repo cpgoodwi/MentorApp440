@@ -11,6 +11,16 @@ class Task {
     }
 
     toHTML() {
-        return `<li>TASK</li>`
+        return (`
+            <li>
+                <input type="checkbox" id="goalcheck-${this.taskId}" ${this.isComplete ? 'checked' : ''} onchange="Task.check(${this.memId},${this.taskId})" />
+                <label for="goalcheck-${this.taskId}">${this.taskStr}</label>
+            </li>
+        `)
+    }
+    
+    static check(memId, taskId) {
+        // change the status of this item in the server
+        console.log("task status", memId, taskId)
     }
 }

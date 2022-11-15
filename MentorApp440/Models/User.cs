@@ -18,9 +18,9 @@ public class User
     private enum UserType
     {
         // Admin,
-        Newbie, // 0
-        Peer, // 1
-        Mentor // 2
+        Newbie = 1,
+        Peer = 2,
+        Mentor = 3
     }
 
     private class Goal
@@ -69,24 +69,6 @@ public class User
         Mentor = new MentorStruct(mentorUsername);
         Type = (UserType)type;
         IsAdmin = isAdmin;
-
-        // task and goals still hardcoded until data table is set up
-        
-        Goals = new List<Goal>
-        {
-            new Goal(false, "This is the first goal"),
-            new Goal(false, "This is the second goal"),
-            new Goal(true, "This is the third goal"),
-            new Goal(false, "This is the fourth goal")
-        };
-        
-        Tasks = new List<Task>
-        {
-            new Task(false, "This is the first task"),
-            new Task(false, "This is the second task"),
-            new Task(true, "This is the third task"),
-            new Task(false, "This is the fourth task")
-        };
     }
 
     public User(int orgId, string username)

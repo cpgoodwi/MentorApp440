@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using MentorApp440.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using MentorApp440.Models;
 using MentorApp440.Session;
@@ -60,10 +61,10 @@ public class HomeController : Controller
             // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
         }
 
-        if (username.Equals("admin")) // if username in admin return admin view
-            return View("Admin");
-        else // if username in employee return standard user view
-            return View("User");
+        return View(SqlConnection.LoginAdmin(orgSelect, username) ? // if username in admin return admin view
+            "Admin" :
+            // if username in employee return standard user view
+            "User");
     }
 
     /* ToDashboard()

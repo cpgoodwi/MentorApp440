@@ -390,6 +390,32 @@ public class SqlConnection
         return taskList;
     }
 
+    public static bool LoginAdmin(int orgId, string username)
+    {
+        EstablishConnection();
+
+        var isAdmin = false;
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"select username from MEMBER where orgId = {orgId} and orgadmin;";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+            
+            // damn rider is cool 😎
+            if (dt.Rows.Cast<DataRow>().Any(dr => username.Equals(dr["username"].ToString())))
+            {
+                isAdmin = true;
+            }
+        }
+        
+        connection.Close();
+
+        return isAdmin;
+    }
+
     // TODO: make this add to the database
     public static void InsertGoal(int memId, string goalStr)
     {

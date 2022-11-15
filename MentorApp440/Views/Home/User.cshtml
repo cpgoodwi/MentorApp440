@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using MentorApp440.Helpers
 @using MentorApp440.Controllers
+@using System.Diagnostics.Eventing.Reader
 @*
     ViewData:
     - Title is just the title of the page
@@ -113,7 +114,7 @@
                                     <i class="fas fa-calendar-alt fa-lg me-3"></i>
                                 </a>
                                 <div>
-                                    <button type="button" class="btn btn-primary">Add</button>
+                                    <button type="submit" class="btn btn-primary">Add</button>
                                 </div>
                             </form>
                         </div>
@@ -139,16 +140,11 @@
                 </li>
             </ul>
             <!-- Tabs navs -->
-            <ul id="goalListId">
-                @* populate this list with goal items from database *@
-                @*@foreach (var goal in SqlConnection.GetGoalsFromMemberId(viewUser.MemberId))
-                {
-                    <li>
-                        <input type="checkbox" id="goalcheck-@goal.GoalId"/>
-                        <label for="goalcheck-@goal.GoalId">@goal.GoalStr</label>
-                    </li>
-                }*@
-            </ul>
+            <fieldset @if (!viewSelf) { <text>disabled="disabled"</text> } onchange="goalChange()">
+                <ul id="goalListId">
+                    @* populate this list with goal items from database *@
+                </ul>
+            </fieldset>
         </div>
 
         <div class="col-1">&nbsp;</div>
@@ -237,17 +233,11 @@
             </ul>
             <!-- Tabs navs -->
 
-            <ul id="taskListId">
-                @*@foreach (var task in viewUser.ListTasks()) // iterate through ViewUser's task list
-                {
-                    <li>
-                        <input type="checkbox" id="taskcheck"/>
-                        <label for="taskcheck">@task</label>
-                    </li>
-
-                    // load each incomplete one as a list item
-                }*@
-            </ul>
+            <fieldset @if (!viewSelf) { <text>disabled="disabled"</text> } onchange="taskChange()">
+                <ul id="taskListId">
+                    @* populate this list with task items from database *@
+                </ul>
+            </fieldset>
         </div>
         <div class="col-1">&nbsp;</div>
     </div>
@@ -265,64 +255,57 @@
 
     <script type="text/javascript">
     
-    $(document).ready(function () {
-        // load goals into a js array
-        $.ajax({
-            type:"GET",
-            url: "@Url.Action("GetGoals", "API")",
-            data: {
-                memId: @viewUser.MemberId
-            },
-            dataType: "json",
-            success: function (result) {
-                // console.log("goals", result)
-                // var userGoalList = result
-                // result.forEach(pushGoal)
-                // userGoalList = result
-                loadGoals(result)
-                
-                // load tasks into a js array
-                $.ajax({
-                    type:"GET",
-                    url: "@Url.Action("GetTasks", "API")",
-                    data: {
-                        memId: @viewUser.MemberId
-                    },
-                    dataType: "json",
-                    success: function (result) {
-                        // console.log("tasks", result)
-                        // var userTaskList = result
-                        // result.forEach(pushTask)
-                        // userTaskList = result
-                        loadTasks(result)
-                    },
-                    error: function (req, status, error) {
-                        console.log(req)
-                        console.log(status)
-                        console.log(error)
-                    }
-                })
-            },
-            error: function (req, status, error) {
-                console.log(req)
-                console.log(status)
-                console.log(error)
-            }
-        })
-        
-        // for some reason, I have to put an ajax call inside of an ajax call???
-        
-        // console.log("after", userGoalList)
-        // console.log("after", userTaskList)
+    // load goals into a js array
+    $.ajax({
+        type:"GET",
+        url: "@Url.Action("GetGoals", "API")",
+        data: {
+            memId: @viewUser.MemberId
+        },
+        dataType: "json",
+        success: function (result) {
+            // console.log("goals", result)
+            // var userGoalList = result
+            // result.forEach(pushGoal)
+            // userGoalList = result
+            loadGoals(result)
+            
+            // load tasks into a js array
+            $.ajax({
+                type:"GET",
+                url: "@Url.Action("GetTasks", "API")",
+                data: {
+                    memId: @viewUser.MemberId
+                },
+                dataType: "json",
+                success: function (result) {
+                    // console.log("tasks", result)
+                    // var userTaskList = result
+                    // result.forEach(pushTask)
+                    // userTaskList = result
+                    loadTasks(result)
+                },
+                error: function (req, status, error) {
+                    console.log(req)
+                    console.log(status)
+                    console.log(error)
+                }
+            })
+        },
+        error: function (req, status, error) {
+            console.log(req)
+            console.log(status)
+            console.log(error)
+        }
     })
     
     /*const loadGoals = () => {
         // let goalList
         $.ajax({
             type: "GET",
-            url: "@Url.Action("GetGoals", "API")",
+            url: "@*@Url.Action("GetGoals", "API")*@",
             data: {
-                memId: @viewUser.MemberId
+                memId: @*@viewUser.MemberId*@
             },
             dataType: "json",
             success: function (result) {
@@ -338,9 +321,9 @@
         let taskList
         $.ajax({
             type: "GET",
-            url: "@Url.Action("GetTasks", "API")",
+            url: "@*@Url.Action("GetTasks", "API*@")",
             data: {
-                memId: @viewUser.MemberId
+                memId: @*@viewUser.MemberId*@
             },
             dataType: "json",
             success: function (result) {
