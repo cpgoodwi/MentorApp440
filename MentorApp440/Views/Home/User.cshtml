@@ -107,8 +107,8 @@
                     <div class="card">
                         <div class="card-body">
                             <form class="d-flex flex-row align-items-center"
-                                  asp-controller="API" asp-action="PostGoal">
-                                <textarea type="text" class="form-control form-control-md" id="exampleFormControlInput1" rows="1"
+                                  asp-controller="API" asp-action="PostGoal" asp-route-memId="@viewUser.MemberId">
+                                <textarea type="text" class="form-control form-control-md" id="goalStrTextArea" name="goalStr" rows="1"
                                       placeholder="Add new..."></textarea>
                                 <a href="#!" data-mdb-toggle="tooltip" title="Set due date">
                                     <i class="fas fa-calendar-alt fa-lg me-3"></i>

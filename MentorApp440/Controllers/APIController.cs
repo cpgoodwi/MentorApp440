@@ -7,10 +7,12 @@ namespace MentorApp440.Controllers;
 public class APIController : Controller
 {
     // takes goal from form and adds it to goal database
+    // [Route("Home/Dashboard")]
     [HttpPost]
-    public void PostGoal(string goal)
+    public IActionResult PostGoal(int memId, string goalStr)
     {
-        
+        SqlConnection.InsertGoal(memId, goalStr);
+        return RedirectToAction("toDashboard","Home");
     }
 
     [HttpGet]
