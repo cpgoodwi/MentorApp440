@@ -231,14 +231,14 @@ public class SqlConnection
             {
                 TaskViewModel taskViewModel = new TaskViewModel();
 
-                taskViewModel.MemID = Convert.ToInt32(dr["memId"]);
-                taskViewModel.MentorID = Convert.ToInt32(dr["mentorId"]);
-                taskViewModel.TaskID = Convert.ToInt32(dr["taskId"]);
-                taskViewModel.Task = dr["taskStr"].ToString();
+                taskViewModel.MemId = Convert.ToInt32(dr["memId"]);
+                taskViewModel.MentorId = Convert.ToInt32(dr["mentorId"]);
+                taskViewModel.TaskId = Convert.ToInt32(dr["taskId"]);
+                taskViewModel.TaskStr = dr["taskStr"].ToString();
                 int isCompleteNum = Convert.ToInt32(dr["iscomplete"]);
                 if (isCompleteNum == 1)
                 {
-                    taskViewModel.isComplete = true;
+                    taskViewModel.IsComplete = true;
                 }
 
                 taskViewModelList.Add(taskViewModel);
@@ -326,9 +326,9 @@ public class SqlConnection
 
     public static List<GoalViewModel> GetGoalsFromMemberId(int memId)
     {
+        var goalList = new List<GoalViewModel>();
+        
         EstablishConnection();
-
-        var GoalList = new List<GoalViewModel>();
 
         if (connection.State == ConnectionState.Open)
         {
@@ -340,7 +340,7 @@ public class SqlConnection
 
             foreach (DataRow dr in dt.Rows)
             {
-                GoalList.Add(new GoalViewModel(
+                goalList.Add(new GoalViewModel(
                     (int)dr["memId"],
                     (int)dr["goalId"],
                     dr["goalStr"].ToString(),
@@ -348,7 +348,45 @@ public class SqlConnection
                     ));
             }
         }
+        
+        connection.Close();
 
-        return GoalList;
+        return goalList;
+    }
+
+    public static List<TaskModel> GetTasksFromMemberId(int memId)
+    {
+        var taskList = new List<TaskModel>();
+        
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            // var sqlQuery = $"select * from TASK where memId = {memId}";
+            var sqlQuery = $"" +
+                           $"select t.memId, m.fullname as mentorName, m.username as mentorUsername, t.taskId, t.taskStr, t.iscomplete " +
+                           $"from TASK t, MEMBER m " +
+                           $"where t.mentorId = m.memId and t.memId = {memId};";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                taskList.Add(new TaskModel(
+                    (int)dr["memId"],
+                    dr["mentorName"].ToString(),
+                    dr["mentorUsername"].ToString(),
+                    (int)dr["taskId"],
+                    dr["taskStr"].ToString(),
+                    (bool)dr["iscomplete"]
+                ));
+            }
+        }
+        
+        connection.Close();
+
+        return taskList;
     }
 }

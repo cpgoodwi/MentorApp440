@@ -15,7 +15,7 @@ namespace MentorApp440.Models
 
         public bool IsComplete { get; set; }
 
-        public GoalViewModel(int memId, int goalId, string goalStr, bool isComplete)
+        public GoalViewModel(int memId, int goalId, string? goalStr, bool isComplete)
         {
             MemId = memId;
             GoalId = goalId;

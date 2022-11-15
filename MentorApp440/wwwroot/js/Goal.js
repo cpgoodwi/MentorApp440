@@ -1,6 +1,9 @@
-﻿
+﻿// console.log("Goal loaded")
+
 class Goal {
-    constructor(goalStr, isComplete) {
+    constructor(memId, goalId, goalStr, isComplete) {
+        this.memId = memId
+        this.goalId = goalId
         this.goalStr = goalStr
         this.isComplete = isComplete
     }

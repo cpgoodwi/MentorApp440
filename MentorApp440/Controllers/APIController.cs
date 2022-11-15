@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MentorApp440.Controllers;
 
 // [Route("api/[controller]")]
-public class UserController : Controller
+public class APIController : Controller
 {
     // takes goal from form and adds it to goal database
     [HttpPost]
@@ -18,5 +18,12 @@ public class UserController : Controller
     {
         var goalList = SqlConnection.GetGoalsFromMemberId(memId);
         return new JsonResult(goalList);
+    }
+
+    [HttpGet]
+    public JsonResult GetTasks(int memId)
+    {
+        var taskList = SqlConnection.GetTasksFromMemberId(memId);
+        return new JsonResult(taskList);
     }
 }
