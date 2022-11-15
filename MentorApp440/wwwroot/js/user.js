@@ -25,3 +25,11 @@ function loadTasks(userTaskList) {
         taskListElem.innerHTML += new Task(goal.memId, goal.goalId, goal.goalStr, goal.isComplete).toHTML()
     }
 }
+
+function goalChange() {
+    // console.log("goals changed")
+}
+
+function taskChange() {
+    console.log("task changed")
+}

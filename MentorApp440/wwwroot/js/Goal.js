@@ -19,6 +19,6 @@ class Goal {
     
     static check(memId, goalId) {
         // change the status of the item in the server
-        console.log("change status", memId, goalId)
+        console.log("goal status", memId, goalId)
     }
 }
