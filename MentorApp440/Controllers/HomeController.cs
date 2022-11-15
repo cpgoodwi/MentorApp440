@@ -18,7 +18,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        MentorApp440.Helpers.SqlConnection sqlConnection = new Helpers.SqlConnection();
+
+
+        //var inny = MentorApp440.Helpers.SqlConnection.InsertGoal;
+
+        //int memberId = 50;
+        //string GoalString = "I will pass this class";
+
+        //Helpers.SqlConnection.InsertGoal(memberId, GoalString);
+
         return View();
+                
     }
 
     /* LogOut()
