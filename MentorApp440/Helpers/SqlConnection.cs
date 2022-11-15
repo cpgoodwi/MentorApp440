@@ -417,17 +417,37 @@ public class SqlConnection
     }
 
     // TODO: make this add to the database
-    public static void InsertGoal(int memId, string goalStr)
+    public static string InsertGoal(int memId, string goalStr)
     {
         EstablishConnection();
 
+        string entryresult = "";
+        int queryResult;
+
+
         if (connection.State == ConnectionState.Open)
         {
-            var sqlQuery = $"insert into GOAL (memId, goalId, goalStr) values (" +
-                           $"{memId}, (select max(goalId) + 1 from GOAL g where memId = {memId}), {goalStr});";
+            string sqlQuery = "Sprouc_InsertGoal";
             using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@memId", memId);
+            cmd.Parameters.AddWithValue("@goalStr", goalStr);
+
+            queryResult = cmd.ExecuteNonQuery();
+
+            if (queryResult == 1)
+            {
+                entryresult = "Food has been added!";
+            }
+            else
+            {
+                entryresult = "Food entry has Failed. Please try again!";
+            }
         }
         
-        connection.Close();
+        //connection.Close();
+
+        return entryresult;
     }
 }
