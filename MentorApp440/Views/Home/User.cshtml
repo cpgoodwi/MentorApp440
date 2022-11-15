@@ -11,6 +11,8 @@
     // TODO: change this to use ViewContext instead of passing session state as view data
 *@
 
+@* change *@
+
 @{
     /*// If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
     if (!(ViewData["UserId"] as string).Equals(ViewData["ViewUser"] as string))
@@ -138,13 +140,13 @@
             <!-- Tabs navs -->
             <ul id="goalListId">
                 @* populate this list with goal items from database *@
-                @foreach (var goal in SqlConnection.GetGoalsFromMemberId(viewUser.MemberId))
+                @*@foreach (var goal in SqlConnection.GetGoalsFromMemberId(viewUser.MemberId))
                 {
                     <li>
                         <input type="checkbox" id="goalcheck-@goal.GoalId"/>
                         <label for="goalcheck-@goal.GoalId">@goal.GoalStr</label>
                     </li>
-                }
+                }*@
             </ul>
         </div>
 
@@ -250,27 +252,65 @@
     </div>
 </div>
 
+@* <script type="text/javascript" src="~/js/Goal.js" asp-append-version="true" async></script> *@
+@* <script type="text/javascript" src="~/js/Task.js" asp-append-version="true" async></script> *@
+@* <script type="text/javascript" src="~/js/user.js" asp-append-version="true" defer></script> *@
+
 @section Scripts
 {
-    <script type="text/javascript" src="js/Goal.js"></script>
-    <script type="text/javascript" src="js/Task.js"></script>
-    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="~/js/Goal.js" asp-append-version="true" async></script>
+    <script type="text/javascript" src="~/js/Task.js" asp-append-version="true" async></script>
+    <script type="text/javascript" src="~/js/user.js" asp-append-version="true" async></script>
+
+    <script type="text/javascript">
     
-    <script type="text/javascript" defer>
+    // const goalListElem = document.getElementById("goalListId")
+    // const taskListElem = document.getElementById("taskListId")
     
-    const goalListElem = document.getElementById("goalListId")
-    const taskListElem = document.getElementById("taskListId")
-    /*
-    $(document).ready(function () {        
+    // const userGoalList = []
+    // const pushGoal = (goal) => { userGoalList.push(goal) }
+    // // console.log(userGoalList)
+    //
+    // const userTaskList = []
+    // const pushTask = (goal) => { userTaskList.push(goal) }
+    // // console.log(userTaskList)
+    
+    $(document).ready(function () {
+        // load goals into a js array
         $.ajax({
             type:"GET",
-            url: "@Url.Action("GetGoals", "User")",
+            url: "@Url.Action("GetGoals", "API")",
             data: {
                 memId: @viewUser.MemberId
             },
             dataType: "json",
             success: function (result) {
-                hydrateGoals(result)
+                // console.log("goals", result)
+                // var userGoalList = result
+                // result.forEach(pushGoal)
+                // userGoalList = result
+                loadGoals(result)
+                
+                // load tasks into a js array
+                $.ajax({
+                    type:"GET",
+                    url: "@Url.Action("GetTasks", "API")",
+                    data: {
+                        memId: @viewUser.MemberId
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        // console.log("tasks", result)
+                        // var userTaskList = result
+                        // result.forEach(pushTask)
+                        // userTaskList = result
+                    },
+                    error: function (req, status, error) {
+                        console.log(req)
+                        console.log(status)
+                        console.log(error)
+                    }
+                })
             },
             error: function (req, status, error) {
                 console.log(req)
@@ -278,15 +318,14 @@
                 console.log(error)
             }
         })
+        
+        // for some reason, I have to put an ajax call inside of an ajax call???
+        
+        // console.log("after", userGoalList)
+        // console.log("after", userTaskList)
     })
     
-    function hydrateGoals(goalList) {
-        goalListElem.innerHTML = ""
-        console.log(goalList)
-        for (const goal in goalList) {
-            goalListElem.innerHTML += new Goal(goal.goalStr, goal.isComplete).toHTML()
-        }
-    }
-    */
     </script>
+    
+    @* <script type="text/javascript" src="~/js/user.js" asp-append-version="true" defer></script> *@
 }

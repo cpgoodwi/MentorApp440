@@ -3,19 +3,33 @@ namespace MentorApp440.Models
 {
 
     // This object is for the TASK Table in the database.
-    // This attriubuets can be called anywhere in the codebase.
+    // these attributes can be called anywhere in the codebase.
 
     public class TaskViewModel
     {
-        public int MemID { get; set; }
+        public int MemId { get; set; }
 
-        public int MentorID { get; set; }
+        public int MentorId { get; set; }
 
-        public int TaskID { get; set; }
+        public int TaskId { get; set; }
              
-        public String? Task { get; set; }
+        public string? TaskStr { get; set; }
 
-        public bool isComplete { get; set; }
+        public bool IsComplete { get; set; }
+
+        public TaskViewModel(int memId, int mentorId, int taskId, string? taskStr, bool isComplete)
+        {
+            MemId = memId;
+            MentorId = mentorId;
+            TaskId = taskId;
+            TaskStr = taskStr;
+            IsComplete = isComplete;
+        }
+
+        public TaskViewModel()
+        {
+            
+        }
     }
 }
 
