@@ -12,7 +12,7 @@ class Peer {
         return (
             `<li>
                 <ul>
-                    <img src="~/lib/Images/Profile.jpeg" className="img-thumbnail" id="peerPic" alt="" width="10px"
+                    <img src="~/lib/Images/Profile.jpeg" class="img-thumbnail" id="peerPic" alt="" width="10px"
                          height="10px"/>
                     <a href="">${this.name}</a>
                 </ul>
