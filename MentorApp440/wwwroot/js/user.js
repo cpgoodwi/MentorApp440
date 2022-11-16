@@ -21,8 +21,8 @@ function loadGoals(userGoalList) {
 }
 
 function loadTasks(userTaskList) {
-    for (const goal of userTaskList) {
-        taskListElem.innerHTML += new Task(goal.memId, goal.goalId, goal.goalStr, goal.isComplete).toHTML()
+    for (const task of userTaskList) {
+        taskListElem.innerHTML += new Task(task.memId, task.mentorName, task.mentorUsername, task.taskId, task.taskStr, task.isComplete).toHTML()
     }
 }
 
