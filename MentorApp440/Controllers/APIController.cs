@@ -1,4 +1,5 @@
 ﻿using MentorApp440.Helpers;
+using MentorApp440.Session;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentorApp440.Controllers;
@@ -7,7 +8,6 @@ namespace MentorApp440.Controllers;
 public class APIController : Controller
 {
     // takes goal from form and adds it to goal database
-    // [Route("Home/Dashboard")]
     [HttpPost]
     public IActionResult PostGoal(int memId, string goalStr)
     {
@@ -27,5 +27,12 @@ public class APIController : Controller
     {
         var taskList = SqlConnection.GetTasksFromMemberId(memId);
         return new JsonResult(taskList);
+    }
+
+    [HttpGet]
+    public JsonResult GetPeers(int memId)
+    {
+        var PeerLists = SqlConnection.GetPeersFromMemberId(memId, HttpContext.Session.Get<int>(SessionVariables._OrgId));
+        return new JsonResult(PeerLists);
     }
 }

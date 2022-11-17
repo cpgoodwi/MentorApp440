@@ -255,6 +255,7 @@
 
     <script type="text/javascript">
     
+    @*
     // load goals into a js array
     $.ajax({
         type:"GET",
@@ -298,32 +299,91 @@
             console.log(error)
         }
     })
+    *@
     
-    /*const loadGoals = () => {
-        // let goalList
+    const refreshData = () => {
+        // load goals into js array, then ...
         $.ajax({
-            type: "GET",
-            url: "@*@Url.Action("GetGoals", "API")*@",
+            type:"GET",
+            url: "@Url.Action("GetGoals", "API")",
             data: {
-                memId: @*@viewUser.MemberId*@
+                memId: @viewUser.MemberId
             },
             dataType: "json",
             success: function (result) {
-                // goalList = result
-                // console.log("from goals ajax", goalList)
-                return result
+                userGoalList = result
+                
+                // load tasks into a js array, then ...
+                $.ajax({
+                    type:"GET",
+                    url: "@Url.Action("GetTasks", "API")",
+                    data: {
+                        memId: @viewUser.MemberId
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        userTaskList = result
+                        
+                        $.ajax({
+                            type: "GET",
+                            url: "@Url.Action("GetPeers", "API")",
+                            data: {
+                                memId: @viewUser.MemberId
+                            },
+                            dataType: "json",
+                            success: function (result) {
+                                console.log(result)
+                                // console.log("from goals ajax", goalList)
+                                // return result
+                            },
+                            error: function (req, status, error) {
+                               console.log(req)
+                               console.log(status)
+                               console.log(error)
+                           }
+                        })
+                    },
+                    error: function (req, status, error) {
+                        console.log(req)
+                        console.log(status)
+                        console.log(error)
+                    }
+                })
+            },
+            error: function (req, status, error) {
+                console.log(req)
+                console.log(status)
+                console.log(error)
             }
         })
-        // return goalList
-    }*/
+    }
     
-    /*const loadTasks = () => {
+    @*
+    const loadGoals = () => {
+        let goalList
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetGoals", "API")",
+            data: {
+                memId: @viewUser.MemberId
+            },
+            dataType: "json",
+            success: function (result) {
+                goalList = result
+                // console.log("from goals ajax", goalList)
+                // return result
+            }
+        })
+        return goalList
+    }
+    
+    const loadTasks = () => {
         let taskList
         $.ajax({
             type: "GET",
-            url: "@*@Url.Action("GetTasks", "API*@")",
+            url: "@Url.Action("GetTasks", "API")",
             data: {
-                memId: @*@viewUser.MemberId*@
+                memId: @viewUser.MemberId
             },
             dataType: "json",
             success: function (result) {
@@ -331,7 +391,8 @@
             }
         })
         return taskList
-    }*/
+    }
+    *@
     
     </script>
 
