@@ -3,32 +3,15 @@
 @using MentorApp440.Helpers
 @using MentorApp440.Controllers
 @using System.Diagnostics.Eventing.Reader
-@*
-    ViewData:
-    - Title is just the title of the page
-    - UserId is the username or Id of the user
-    - ViewUser is used to select which profile is being viewed
-    
-    // TODO: change this to use ViewContext instead of passing session state as view data
-*@
-
-@* change *@
 
 @{
-    /*// If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
-    if (!(ViewData["UserId"] as string).Equals(ViewData["ViewUser"] as string))
-        ViewData["Title"] = $"{ViewData["ViewUser"]} - Profile";
-    else
-        ViewData["Title"] = "Dashboard";*/
-
-    // var user = new User(1, ViewData["ViewUser"] as string);
-
     var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables._Username);
     var loggedIn = !string.IsNullOrWhiteSpace(currUser);
     // var viewUser = new User(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
     var viewUser = SqlConnection.ConstructUserFromDatabase(ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId), ViewContext.HttpContext.Session.Get<string>(SessionVariables._Viewing));
     var viewSelf = currUser.Equals(viewUser.Username);
     
+    // If the viewer is viewing their other profile, the title is "{Username} - Profile", else they're viewing themselves then title is "Dashboard"
     if (!(currUser.Equals(viewUser.Username)))
         ViewData["Title"] = $"{viewUser.Username} - Profile";
     else
@@ -41,6 +24,7 @@
 @* <script type="text/javascript" src="js/Task.js" async></script> *@
 @* <script type="text/javascript" src="js/user.js" async></script> *@
 
+@* TODO: make the nav bar part of _Layout.cshtml *@
 <nav class="navbar  sticky-top navbar-light" id="navBar">
     <div class="container">
         <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
@@ -143,6 +127,16 @@
             <fieldset @if (!viewSelf) { <text>disabled="disabled"</text> } onchange="goalChange()">
                 <ul id="goalListId">
                     @* populate this list with goal items from database *@
+                    @foreach (var goal in SqlConnection.GetGoalsFromMemberId(viewUser.MemberId))
+                    {
+                        <li>
+                            <input type="checkbox" 
+                                   id="goalcheck-@goal.GoalId" 
+                                   @if (goal.IsComplete) { <text>checked</text> } 
+                                   onchange="Goal.check(@goal.MemId, @goal.GoalId)" />
+                            <label for="goalcheck-@goal.GoalId">@goal.GoalStr</label>
+                        </li>
+                    }
                 </ul>
             </fieldset>
         </div>
@@ -159,16 +153,43 @@
                     }
                     else
                     {
-                        <p>user has no mentor</p>
+                        if (viewSelf)
+                        {
+                            // TODO: implement finding a new mentor
+                            <p>find new mentor</p>
+                        }
+                        else
+                        {
+                            <p>user has no mentor</p>
+                        }
                     }
                 </div>
-                <div class="card-body">
-                    <ul class="card-text">
-                        <li>Peer</li>
-                        <li>Peer</li>
-                        <li>Peer</li>
+                @* display peers *@
+                <div id="currPeers" class="card-body">
+                    <ul id="PeerList" class="card-text">
+                        @foreach (var peer in SqlConnection.GetCurPeers(viewUser.MemberId, ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId)))
+                        {
+                            <li>
+                                <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname</a>
+                            </li>
+                        }
                     </ul>
                 </div>
+                @* display potential peers if at dashboard *@
+                @if (viewSelf)
+                {
+                    <hr/>
+                    <div id="potPeers" class="card-body">
+                        <ul id="notPeerList" class="card-text">
+                            @foreach (var peer in SqlConnection.GetPotPeers(viewUser.MemberId, ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId)))
+                            {
+                                <li>
+                                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
             </div>
             <div class="py-3">
                 <h3>Goals</h3>
@@ -236,6 +257,16 @@
             <fieldset @if (!viewSelf) { <text>disabled="disabled"</text> } onchange="taskChange()">
                 <ul id="taskListId">
                     @* populate this list with task items from database *@
+                    @foreach (var task in SqlConnection.GetTasksFromMemberId(viewUser.MemberId))
+                    {
+                        <li>
+                            <input type="checkbox" 
+                                   id="taskcheck-@task.TaskId" 
+                                   @if (task.IsComplete) { <text>checked</text> } 
+                                   onchange="Goal.check(@task.MemId, @task.TaskId)" />
+                            <label for="taskcheck-@task.TaskId">@task.TaskStr</label>
+                        </li>
+                    }
                 </ul>
             </fieldset>
         </div>
@@ -299,9 +330,8 @@
             console.log(error)
         }
     })
-    *@
     
-    const refreshData = () => {
+    // const refreshData = () => {
         // load goals into js array, then ...
         $.ajax({
             type:"GET",
@@ -356,9 +386,8 @@
                 console.log(error)
             }
         })
-    }
+    // }
     
-    @*
     const loadGoals = () => {
         let goalList
         $.ajax({
