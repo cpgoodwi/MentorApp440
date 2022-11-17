@@ -301,7 +301,6 @@ public class SqlConnection
                 memberData.FullName = dr["fullname"].ToString();
                 memberData.Description = dr["description"].ToString();
                 memberData.UserType = (byte)dr["usertype"];
-                memberData.Mentor = dr["mentor"].ToString();
                 memberData.isOrgAdmin = (bool)dr["orgadmin"];
             }
         }
@@ -313,16 +312,40 @@ public class SqlConnection
             memberData.UserName,
             memberData.FullName,
             memberData.Description,
-            memberData.Mentor , // needed to make this a non-recursive reference
             memberData.UserType,
             memberData.isOrgAdmin
             );
     }
 
-    // TODO: get mentor's name given a username, and maybe a orgId (I can add that param later)
-    public static string GetMentorNameFromUsername(string username)
+    // TODO: get mentor's name given a memId, and maybe a orgId (I can add that param later)
+    public static MentorViewModel GetMentor(int memId)
     {
-        return "Mentor Man";
+        var mentorMan = new MentorViewModel();
+
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = "Sprouc_getMentor";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@memId_param", memId);
+            
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+            
+            foreach (DataRow dr in dt.Rows)
+            {
+                mentorMan.Username = dr["username"].ToString();
+                mentorMan.Fullname = dr["fullname"].ToString();
+            }
+        }
+        
+        connection.Close();
+        
+        return mentorMan;
     }
 
     public static List<GoalViewModel> GetGoalsFromMemberId(int memId)
@@ -453,6 +476,7 @@ public class SqlConnection
 
     // given a memberId, it returns a pair of lists,
     // the first list is list of peers, and the second is everyone who's not a peer
+    // don't even need this monstrosity
     public static IEnumerable<List<PeerViewModel>> GetPeersFromMemberId(int memId, int orgId)
     {
         var peerList = new List<PeerViewModel>();
@@ -467,8 +491,8 @@ public class SqlConnection
             using var peerCmd = new MySqlCommand(peerQuery, connection);
             peerCmd.CommandType = CommandType.StoredProcedure;
 
-            peerCmd.Parameters.AddWithValue("@memId", memId);
-            peerCmd.Parameters.AddWithValue("@orgId", orgId);
+            peerCmd.Parameters.AddWithValue("@memId_param", memId);
+            peerCmd.Parameters.AddWithValue("@orgId_param", orgId);
 
             var da = new MySqlDataAdapter(peerCmd);
             var dt = new DataTable();
@@ -492,8 +516,8 @@ public class SqlConnection
             using var newPeerCmd = new MySqlCommand(newPeerQuery, connection);
             newPeerCmd.CommandType = CommandType.StoredProcedure;
 
-            newPeerCmd.Parameters.AddWithValue("@memId", memId);
-            newPeerCmd.Parameters.AddWithValue("@orgId", orgId);
+            newPeerCmd.Parameters.AddWithValue("@memId_param", memId);
+            newPeerCmd.Parameters.AddWithValue("@orgId_param", orgId);
 
             da = new MySqlDataAdapter(peerCmd);
             dt = new DataTable();
@@ -516,5 +540,75 @@ public class SqlConnection
         connection.Close();
         
         return new List<List<PeerViewModel>> { peerList, newPeers };
+    }
+
+    // given memId and orgId, it will return a list of the person's peers
+    public static List<PeerViewModel> GetCurPeers(int memId, int orgId)
+    {
+        var peerList = new List<PeerViewModel>();
+        
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            // queries database for list of added peers
+            const string peerQuery = "Sprouc_GetPeersByMemId";
+            using var peerCmd = new MySqlCommand(peerQuery, connection);
+            peerCmd.CommandType = CommandType.StoredProcedure;
+
+            peerCmd.Parameters.AddWithValue("@memId_param", memId);
+            peerCmd.Parameters.AddWithValue("@orgId_param", orgId);
+
+            var da = new MySqlDataAdapter(peerCmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            // can be made more efficient, but like this for readability, for now...
+            foreach (DataRow dr in dt.Rows)
+            {
+                peerList.Add(new PeerViewModel(
+                    (int)dr["orgId"],
+                    (int)dr["memId"],
+                    dr["username"].ToString(),
+                    dr["fullname"].ToString(),
+                    (byte)dr["usertype"],
+                    dr["description"].ToString()
+                ));
+            }
+        }
+        
+        connection.Close();
+
+        return peerList;
+    }
+    
+    // given orgId and memId, it will return a list of all not currently peers
+    public static List<PeerViewModel> GetPotPeers(int memId, int orgId)
+    {
+        var peerList = new List<PeerViewModel>();
+        
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            // queries database for list of added peers
+            const string peerQuery = "Sprouc_GetNewPeers";
+            using var peerCmd = new MySqlCommand(peerQuery, connection);
+            peerCmd.CommandType = CommandType.StoredProcedure;
+
+            peerCmd.Parameters.AddWithValue("@memId_param", memId);
+            peerCmd.Parameters.AddWithValue("@orgId_param", orgId);
+
+            var da = new MySqlDataAdapter(peerCmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            // this is the same as before, but Rider converted it :)
+            peerList.AddRange(from DataRow dr in dt.Rows select new PeerViewModel((int)dr["orgId"], (int)dr["memId"], dr["username"].ToString(), dr["fullname"].ToString(), (byte)dr["usertype"], dr["description"].ToString()));
+        }
+        
+        connection.Close();
+
+        return peerList;
     }
 }

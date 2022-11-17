@@ -3,11 +3,11 @@
 const goalListElem = document.getElementById("goalListId")
 const taskListElem = document.getElementById("taskListId")
 
-let userGoalList
+let userGoalList = []
 // const pushGoal = (goal) => { userGoalList.push(goal) }
 // console.log(userGoalList)
 
-let userTaskList
+let userTaskList = []
 // const pushTask = (goal) => { userTaskList.push(goal) }
 // console.log(userTaskList)
 
@@ -35,8 +35,5 @@ function loadTasks() {
 // }
 
 $(document).ready(function () {
-    refreshData();
-    
-    loadGoals()
-    loadTasks()
+    console.log("from user.js: ready!")
 })
