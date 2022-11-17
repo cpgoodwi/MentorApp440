@@ -21,7 +21,7 @@ public class SqlConnection
 
     // This class builds a string connection and uses it to connect to the database.
     // It returns a string that tells you if the connect is successful and send it to the controller
-    public static string EstablishConnection()
+    private static string EstablishConnection()
     {
         string ConnectionResult;
         MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -42,6 +42,60 @@ public class SqlConnection
         }
 
         return ConnectionResult;
+    }
+
+    public static bool ValidUser(int orgId, string username)
+    {
+        var isValid = false;
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            // TODO: make a more efficient query
+            var sqlQuery = $"select count(*) as n from MEMBER where orgId = {orgId} and username = '{username}';";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Cast<DataRow>().Any(dr => (long)dr["n"] > 0))
+            {
+                isValid = true;
+            }
+            
+        }
+        
+        connection.Close();
+
+        return isValid;
+    }
+
+    public static int? UserMemId(int orgId, string username)
+    {
+        int? userId = null;
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            // TODO: make a more efficient query
+            var sqlQuery = $"select memId from MEMBER where orgId = {orgId} and username = '{username}';";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                userId = (int)dr["memId"];
+            }
+            
+        }
+        
+        connection.Close();
+
+        return userId;
     }
 
 
@@ -610,5 +664,199 @@ public class SqlConnection
         connection.Close();
 
         return peerList;
+    }
+    
+    // load an individual goal view model
+    public static GoalViewModel GetGoal(int memId, int goalId)
+    {
+        GoalViewModel goal = null;
+
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = $"Sprouc_getGoal";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@memId_param", memId);
+            cmd.Parameters.AddWithValue("@goalId_param", goalId);
+            
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+            
+            foreach (DataRow dr in dt.Rows)
+            {
+                goal = new GoalViewModel(
+                    (int)dr["memId"],
+                    (int)dr["goalId"],
+                    dr["goalStr"].ToString(),
+                    (bool)dr["iscomplete"]
+                );
+            }
+        }
+        
+        connection.Close();
+        
+        return goal;
+    }
+    
+    // load an individual task view model
+    public static TaskModel GetTask(int memId, int taskId)
+    {
+        TaskModel task = null;
+
+        EstablishConnection();
+        
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = $"Sprouc_getTask";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@memId_param", memId);
+            cmd.Parameters.AddWithValue("@taskId_param", taskId);
+            
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+            
+            foreach (DataRow dr in dt.Rows)
+            {
+                task = new TaskModel(
+                    (int)dr["memId"],
+                    dr["mentorName"].ToString(),
+                    dr["mentorUsername"].ToString(),
+                    (int)dr["taskId"],
+                    dr["taskStr"].ToString(),
+                    (bool)dr["iscomplete"]
+                );
+            }
+        }
+        
+        connection.Close();
+        
+        return task;
+    }
+    
+    // post a comment to a goal
+    public static string GoalComment(int fromId, int memId, int goalId, string comm)
+    {
+        var entryresult = "";
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = "Sprouc_CommentGoal";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@fromId_param", fromId);
+            cmd.Parameters.AddWithValue("@memId_param", memId);
+            cmd.Parameters.AddWithValue("@goalId_param", goalId);
+            cmd.Parameters.AddWithValue("@comm_param", comm);
+
+            var queryresult = cmd.ExecuteNonQuery();
+
+            entryresult = queryresult == 1 ? "posted comment" : "comment failed";
+        }
+
+        return entryresult;
+    }
+    
+    // post a comment to a task
+    public static string TaskComment(int fromId, int memId, int taskId, string comm)
+    {
+        var entryresult = "";
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            const string sqlQuery = "Sprouc_CommentTask";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@fromId_param", fromId);
+            cmd.Parameters.AddWithValue("@memId_param", memId);
+            cmd.Parameters.AddWithValue("@taskId_param", taskId);
+            cmd.Parameters.AddWithValue("@comm_param", comm);
+
+            var queryresult = cmd.ExecuteNonQuery();
+
+            entryresult = queryresult == 1 ? "posted comment" : "comment failed";
+        }
+
+        return entryresult;
+    }
+
+    public static List<CommentViewModel> LoadGoalComments(int memId, int goalId)
+    {
+        var goalComList = new List<CommentViewModel>();
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"Sprouc_GetGoalComs";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@memId_p", memId);
+            cmd.Parameters.AddWithValue("@goalId_p", goalId);
+            
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                goalComList.Add(new CommentViewModel(
+                    dr["fullname"].ToString(),
+                    dr["username"].ToString(),
+                    dr["comm"].ToString()
+                ));
+            }
+        }
+        
+        connection.Close();
+
+        return goalComList;
+    }
+    
+    public static List<CommentViewModel> LoadTaskComments(int memId, int taskId)
+    {
+        var taskComments = new List<CommentViewModel>();
+        
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            var sqlQuery = $"Sprouc_GetTaskComs";
+            using var cmd = new MySqlCommand(sqlQuery, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.AddWithValue("@memId_p", memId);
+            cmd.Parameters.AddWithValue("@taskId_p", taskId);
+            
+            var da = new MySqlDataAdapter(cmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                taskComments.Add(new CommentViewModel(
+                    dr["fullname"].ToString(),
+                    dr["username"].ToString(),
+                    dr["comm"].ToString()
+                ));
+            }
+        }
+        
+        connection.Close();
+
+        return taskComments;
     }
 }

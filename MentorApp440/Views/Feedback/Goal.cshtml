@@ -1,0 +1,60 @@
+﻿@using MentorApp440.Helpers
+@using MentorApp440.Session
+@* This is probably best done with a view model, but I'm not sure... *@
+
+@{
+    Layout = "_Layout";
+
+    var goal = SqlConnection.GetGoal((int)ViewData["MemId"], (int)ViewData["GoalId"]);
+    
+    ViewData["Title"] = goal.GoalStr;
+    
+    var currUser = ViewContext.HttpContext.Session.Get<string>(SessionVariables._Username);
+    var loggedIn = !string.IsNullOrWhiteSpace(currUser);
+}
+
+@* TODO: style this page *@
+
+<nav class="navbar  sticky-top navbar-light" id="navBar">
+    <div class="container">
+        @* removed link on Flomento because it is pointless at the moment - charley*@
+        <a class="navbar-brand" @*href="#"*@ id="flomentoTitle">Flomento</a>
+        <ul class="navbar-nav list-group-horizontal">
+            @if (loggedIn)
+            {
+                <li class="nav-item offset-1">
+                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="LogOut" style="color: white;">LogOut</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="ToDashboard" style="color: white;">Dashboard</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link navBarLinks" asp-controller="Home" asp-action="Index" style="color: white;">Log in</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>
+
+@* the goal itself *@
+<h2>@goal.GoalStr</h2>
+
+@* the listing of comments *@
+<ul>
+    @foreach (var comment in SqlConnection.LoadGoalComments(goal.MemId, goal.GoalId))
+    {
+        <li id="@comment.FromMemberUsername">
+            <h6>@comment.FromMemberName</h6>
+            <p>@comment.Comment</p>
+        </li>
+    }
+</ul>
+
+@* the prompt to post a comment *@
+<form asp-controller="Feedback" asp-action="GoalComment" asp-route-memId="@goal.MemId" asp-route-goalId="@goal.GoalId">
+    <textarea type="text" name="comm" required="required"></textarea>
+    <button type="submit">Comment</button>
+</form>

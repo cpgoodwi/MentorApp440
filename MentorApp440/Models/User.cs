@@ -11,19 +11,10 @@ public class User
     public string Image { get; set; } // string for image url to display their image
     public string Desc { get; set; }
     private MentorViewModel Mentor { get; set; }
-    private UserType Type { get; set; }
+    public UserTypeEnum Type { get; set; }
     private List<Goal> Goals { get; set; }
     private List<Task> Tasks { get; set; }
     public bool IsAdmin { get; set; }
-
-
-    private enum UserType
-    {
-        // Admin,
-        Newbie = 1,
-        Peer = 2,
-        Mentor = 3
-    }
 
     private class Goal
     {
@@ -57,7 +48,7 @@ public class User
         // Image = image; // excluding image from scope of sprints
         Desc = desc;
         Mentor = SqlConnection.GetMentor(MemberId);
-        Type = (UserType)type;
+        Type = (UserTypeEnum)type;
         IsAdmin = isAdmin;
     }
 
@@ -68,7 +59,7 @@ public class User
     public bool IsNew()
     {
         if (!IsAdmin)
-            return Type == UserType.Newbie;
+            return Type == UserTypeEnum.Newbie;
         return false;
     }
 
