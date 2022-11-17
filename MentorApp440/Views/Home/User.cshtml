@@ -16,6 +16,23 @@
         ViewData["Title"] = $"{viewUser.Username} - Profile";
     else
         ViewData["Title"] = "Dashboard";
+    
+    // function for emojis to distinguish
+    Func<int, string> distinguish = (userType) =>
+    {
+        switch ((UserTypeEnum)userType)
+        {
+            case UserTypeEnum.Newbie:
+                return "👶";
+            case UserTypeEnum.Peer:
+                return "👨‍💼";
+            case UserTypeEnum.Mentor:
+                return "👨‍🎓";
+            default:
+                break;
+        }
+        return "";
+    };
 }
 
 <link rel="stylesheet" href="~/css/User.css" asp-append-version="true"/>
@@ -27,7 +44,8 @@
 @* TODO: make the nav bar part of _Layout.cshtml *@
 <nav class="navbar  sticky-top navbar-light" id="navBar">
     <div class="container">
-        <a class="navbar-brand" href="#" id="flomentoTitle">Flomento</a>
+        @* removed link on Flomento because it is pointless at the moment - charley*@
+        <a class="navbar-brand" @*href="#"*@ id="flomentoTitle">Flomento</a>
         <ul class="navbar-nav list-group-horizontal">
             @if (loggedIn)
             {
@@ -53,7 +71,7 @@
         <div class="col-7">
             <img src="~/lib/Images/Profile.jpeg" class="img-thumbnail" id="profilePic" alt="" width="150px" height="150px"/>
             <div id="profileInfo">
-                <h1 class="offset-3">@viewUser.Name</h1>
+                <h1 class="offset-3">@viewUser.Name @distinguish((int)viewUser.Type)</h1>
                 <h6 class="offset-3">@viewUser.Desc</h6>
             </div>
         </div>
@@ -134,7 +152,11 @@
                                    id="goalcheck-@goal.GoalId" 
                                    @if (goal.IsComplete) { <text>checked</text> } 
                                    onchange="Goal.check(@goal.MemId, @goal.GoalId)" />
-                            <label for="goalcheck-@goal.GoalId">@goal.GoalStr</label>
+                            <label for="goalcheck-@goal.GoalId">
+                                <a asp-controller="Feedback" asp-action="Goal" asp-route-memId="@viewUser.MemberId" asp-route-goalId="@goal.GoalId">
+                                    @goal.GoalStr
+                                </a>
+                            </label>
                         </li>
                     }
                 </ul>
@@ -170,7 +192,7 @@
                         @foreach (var peer in SqlConnection.GetCurPeers(viewUser.MemberId, ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId)))
                         {
                             <li>
-                                <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname</a>
+                                <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname @distinguish(peer.Type)</a>
                             </li>
                         }
                     </ul>
@@ -184,7 +206,7 @@
                             @foreach (var peer in SqlConnection.GetPotPeers(viewUser.MemberId, ViewContext.HttpContext.Session.Get<int>(SessionVariables._OrgId)))
                             {
                                 <li>
-                                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname</a>
+                                    <a asp-controller="Home" asp-action="SelectUser" asp-route-username="@peer.Username">@peer.Fullname @distinguish(peer.Type)</a>
                                 </li>
                             }
                         </ul>
@@ -264,7 +286,11 @@
                                    id="taskcheck-@task.TaskId" 
                                    @if (task.IsComplete) { <text>checked</text> } 
                                    onchange="Goal.check(@task.MemId, @task.TaskId)" />
-                            <label for="taskcheck-@task.TaskId">@task.TaskStr</label>
+                            <label for="taskcheck-@task.TaskId">
+                                <a asp-controller="Feedback" asp-action="Task" asp-route-memId="@viewUser.MemberId" asp-route-taskId="@task.TaskId">
+                                    @task.TaskStr
+                                </a>
+                            </label>
                         </li>
                     }
                 </ul>

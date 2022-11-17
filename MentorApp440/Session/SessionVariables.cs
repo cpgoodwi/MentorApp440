@@ -10,4 +10,5 @@ public class SessionVariables
     public const string _Username = "_Username";
     public const string _Viewing = "_Viewing";
     public const string _OrgId = "_OrgId";
+    public const string _UserId = "_UserId";
 }

@@ -18,18 +18,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        MentorApp440.Helpers.SqlConnection sqlConnection = new Helpers.SqlConnection();
-
-
-        //var inny = MentorApp440.Helpers.SqlConnection.InsertGoal;
-
-        //int memberId = 50;
-        //string GoalString = "I will pass this class";
-
-        //Helpers.SqlConnection.InsertGoal(memberId, GoalString);
-
         return View();
-                
     }
 
     /* LogOut()
@@ -57,19 +46,29 @@ public class HomeController : Controller
     {
         if (!string.IsNullOrWhiteSpace(username))
         {
-            HttpContext.Session.Set(SessionVariables._Username, username);
-            HttpContext.Session.Set(SessionVariables.SessionKeySessionId,
-                Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
+            if (SqlConnection.ValidUser(orgSelect, username))
+            {
+                HttpContext.Session.Set(SessionVariables._Username, username);
+                HttpContext.Session.Set(SessionVariables._UserId, SqlConnection.UserMemId(orgSelect, username));
+                
+                HttpContext.Session.Set(SessionVariables.SessionKeySessionId,
+                    Guid.NewGuid().ToString()); // not sure if this is 100% necessary, but including it anyway
 
-            ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables._Username);
-            ViewData["ViewUser"] = ViewData["UserId"];
+                ViewData["UserId"] = HttpContext.Session.Get<string>(SessionVariables._Username);
+                ViewData["ViewUser"] = ViewData["UserId"];
 
-            HttpContext.Session.Set(SessionVariables._Viewing, username);
+                HttpContext.Session.Set(SessionVariables._Viewing, username);
             
-            // HttpContext.Session.Set(SessionVariables._OrgId, int.Parse(orgId));
-            HttpContext.Session.Set(SessionVariables._OrgId, orgSelect);
+                // HttpContext.Session.Set(SessionVariables._OrgId, int.Parse(orgId));
+                HttpContext.Session.Set(SessionVariables._OrgId, orgSelect);
 
-            // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
+                // ViewData["UserObj"] = HttpContext.Session.Set<User>(SessionVariables._CurrUser, new User(username));
+            }
+            else
+            {
+                // TODO: fix the URL
+                return View("Index");
+            }
         }
 
         return View(SqlConnection.LoginAdmin(orgSelect, username) ? // if username in admin return admin view
@@ -109,6 +108,14 @@ public class HomeController : Controller
         
         return View("User");
     }
+    
+    // links to goal for Peer or mentor to give feedback and person to rate the feedback
+    // [Route("Goal")]
+    // [HttpGet]
+    // public IActionResult ExpandComment(int memId, int goalId)
+    // {
+    //     return View("GoalTask");
+    // }
 
     public IActionResult Privacy()
     {
