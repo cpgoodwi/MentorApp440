@@ -39,22 +39,32 @@
     </div>
 </nav>
 
-@* the goal itself *@
-<h2>@goal.GoalStr</h2>
+<div class="row pt-3 mx-auto">
+    <div class="col-3">&nbsp;</div>
+    <div class="col-6">
+        <div class="card justify-content-center align-items-center" style="background-color: #5A99D5;">
+            <div class="card-body justify-content-center align-items-center">
+                <h1 class="card-title" style="color: white;">@goal.GoalStr</h1>
+                @* the listing of comments *@
+                <ul>
+                    @foreach (var comment in SqlConnection.LoadGoalComments(goal.MemId, goal.GoalId))
+                    {
+                        <li id="@comment.FromMemberUsername">
+                            <h6 style="color: white;">@comment.FromMemberName</h6>
+                            <p>@comment.Comment</p>
+                        </li>
+                    }
+                </ul>
+                
+                @* the prompt to post a comment *@
+                <form asp-controller="Feedback" asp-action="GoalComment" asp-route-memId="@goal.MemId" asp-route-goalId="@goal.GoalId">
+                    <textarea type="text" name="comm" required="required"></textarea><br/>
+                    <button type="submit">Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">&nbsp;</div>
+</div>
 
-@* the listing of comments *@
-<ul>
-    @foreach (var comment in SqlConnection.LoadGoalComments(goal.MemId, goal.GoalId))
-    {
-        <li id="@comment.FromMemberUsername">
-            <h6>@comment.FromMemberName</h6>
-            <p>@comment.Comment</p>
-        </li>
-    }
-</ul>
 
-@* the prompt to post a comment *@
-<form asp-controller="Feedback" asp-action="GoalComment" asp-route-memId="@goal.MemId" asp-route-goalId="@goal.GoalId">
-    <textarea type="text" name="comm" required="required"></textarea>
-    <button type="submit">Comment</button>
-</form>
