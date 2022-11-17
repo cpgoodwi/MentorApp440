@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using MentorApp440.Models;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
+using MentorApp440.Session;
 
 namespace MentorApp440.Helpers;
 
@@ -415,8 +416,7 @@ public class SqlConnection
 
         return isAdmin;
     }
-
-    // TODO: make this add to the database
+    
     public static string InsertGoal(int memId, string goalStr)
     {
         EstablishConnection();
@@ -449,5 +449,72 @@ public class SqlConnection
         //connection.Close();
 
         return entryresult;
+    }
+
+    // given a memberId, it returns a pair of lists,
+    // the first list is list of peers, and the second is everyone who's not a peer
+    public static IEnumerable<List<PeerViewModel>> GetPeersFromMemberId(int memId, int orgId)
+    {
+        var peerList = new List<PeerViewModel>();
+        var newPeers = new List<PeerViewModel>();
+
+        EstablishConnection();
+
+        if (connection.State == ConnectionState.Open)
+        {
+            // queries database for list of added peers
+            const string peerQuery = "Sprouc_GetPeersByMemId";
+            using var peerCmd = new MySqlCommand(peerQuery, connection);
+            peerCmd.CommandType = CommandType.StoredProcedure;
+
+            peerCmd.Parameters.AddWithValue("@memId", memId);
+            peerCmd.Parameters.AddWithValue("@orgId", orgId);
+
+            var da = new MySqlDataAdapter(peerCmd);
+            var dt = new DataTable();
+            da.Fill(dt);
+
+            // can be made more efficient, but like this for readability, for now...
+            foreach (DataRow dr in dt.Rows)
+            {
+                peerList.Add(new PeerViewModel(
+                    (int)dr["orgId"],
+                    (int)dr["memId"],
+                    dr["username"].ToString(),
+                    dr["fullname"].ToString(),
+                    (int)dr["usertype"],
+                    dr["description"].ToString()
+                ));
+            }
+            
+            // queries database for list of potential peers
+            const string newPeerQuery = "Sprouc_GetNewPeers";
+            using var newPeerCmd = new MySqlCommand(newPeerQuery, connection);
+            newPeerCmd.CommandType = CommandType.StoredProcedure;
+
+            newPeerCmd.Parameters.AddWithValue("@memId", memId);
+            newPeerCmd.Parameters.AddWithValue("@orgId", orgId);
+
+            da = new MySqlDataAdapter(peerCmd);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            // can be made more efficient, but like this for readability, for now...
+            foreach (DataRow dr in dt.Rows)
+            {
+                newPeers.Add(new PeerViewModel(
+                    (int)dr["orgId"],
+                    (int)dr["memId"],
+                    dr["username"].ToString(),
+                    dr["fullname"].ToString(),
+                    (int)dr["usertype"],
+                    dr["description"].ToString()
+                ));
+            }
+        }
+        
+        connection.Close();
+        
+        return new List<List<PeerViewModel>> { peerList, newPeers };
     }
 }
